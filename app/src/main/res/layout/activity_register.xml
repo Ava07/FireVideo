@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginLeft="10dp"
+              android:layout_marginRight="10dp"
+              android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/resetpwd_edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+        android:ems="10"
+        android:hint="请输入您的用户名"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:id="@+id/resetpwd_edit_pwd_old"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/resetpwd_edit_name"
+        android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+        android:ems="10"
+        android:hint="请输入您的密码"
+
+        android:inputType="textPassword"
+        />
+
+    <EditText
+        android:id="@+id/resetpwd_edit_pwd_new"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/resetpwd_edit_pwd_old"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+        android:ems="10"
+        android:hint="请确认您的密码"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/register_btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/register_btn_sure"
+        android:layout_alignStart="@+id/register_btn_sure"
+        android:layout_below="@+id/register_btn_sure"
+        android:layout_marginTop="20dp"
+        android:background="@color/listitem_blue"
+        android:text="取消"
+        android:textSize="20dp"/>
+
+
+    <Button
+        android:id="@+id/register_btn_sure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/resetpwd_edit_pwd_new"
+        android:layout_alignStart="@+id/resetpwd_edit_pwd_new"
+        android:layout_below="@+id/resetpwd_edit_pwd_new"
+        android:layout_marginTop="20dp"
+        android:background="@color/lightblue"
+        android:text="确定"
+        android:textSize="20dp"/>
+
+</LinearLayout>

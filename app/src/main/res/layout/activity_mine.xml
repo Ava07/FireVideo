@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PeopleActivity">
+
+    <!--个人中心界面-->
+    <RelativeLayout
+        android:id="@+id/first_line"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/add_people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/add_people" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="用户名"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/set"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/second_line"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/first_line"
+        android:layout_weight="1">
+
+        <com.example.lenovo.firevideo.view.RoundImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/head"
+            android:layout_centerInParent="false"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/img" />
+    </RelativeLayout>
+
+        <!--设置粉丝、关注、能量-->
+        <RelativeLayout
+            android:layout_toRightOf="@+id/second_line"
+            android:layout_below="@+id/first_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/head_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:id="@+id/fen_num_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <!--粉丝数量-->
+                    <TextView
+                        android:id="@+id/fens_num"
+                        android:layout_centerHorizontal="true"
+                        android:text="0"
+                        android:textSize="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+                    <!--粉丝-->
+                    <TextView
+                        android:id="@+id/fens"
+                        android:layout_below="@+id/fens_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="粉丝"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_toRightOf="@+id/fen_num_info"
+                    android:layout_width="60dp"
+                    android:id="@+id/first_space"
+                    android:layout_height="wrap_content"></RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_toRightOf="@+id/first_space"
+                    android:id="@+id/follow_num_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <!--关注量-->
+                    <TextView
+                        android:id="@+id/follow_num"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:textSize="20dp"
+                        />
+                    <!--关注-->
+                    <TextView
+                        android:id="@+id/follow"
+                        android:layout_below="@+id/follow_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="关注"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/second_space"
+                    android:layout_toRightOf="@+id/follow_num_info"></RelativeLayout>
+                <RelativeLayout
+                    android:layout_toRightOf="@+id/second_space"
+                    android:id="@+id/energy_value_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <!--能量值-->
+                    <TextView
+                        android:id="@+id/energy_value"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7"
+                        android:textSize="20dp"/>
+                    <!--能量-->
+                    <TextView
+                        android:id="@+id/energy"
+                        android:layout_below="@+id/energy_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="能量"/>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <!--编辑按钮-->
+            <Button
+                android:id="@+id/edit"
+                android:layout_below="@+id/head_right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="38dp"
+                android:text="编辑"
+                />
+        </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/third_line"
+        android:layout_below="@+id/second_line"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/sign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="17dp"
+            android:hint="有趣的个性签名会吸引更多的粉丝"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/scan_info"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/third_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/video_logo"
+                android:layout_centerVertical="true"
+                android:background="@drawable/video_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/video_num"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/video_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="20dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/live"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/live_logo"
+                android:layout_centerVertical="true"
+                android:background="@drawable/live_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/live_num"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/live_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="20dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/like"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/like_logo"
+                android:layout_centerVertical="true"
+                android:background="@drawable/like_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/like_num"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/like_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="20dp"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <!--目前通过selector的方式解决了点击radiobutton，换图片-->
+
+        <RadioButton
+            android:id="@+id/btn_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawablePadding="1dp"
+            android:drawableTop="@drawable/radiobutton_homepage"
+            android:gravity="center_horizontal"
+            android:text="首页"
+            android:textColor="#000000" />
+
+
+        <RadioButton
+            android:id="@+id/btn_group"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawablePadding="1dp"
+            android:drawableTop="@drawable/radiobutton_group"
+            android:gravity="center_horizontal"
+            android:text="关注"
+            android:textColor="#000000" />
+
+        <!--用来消除掉RadioButton标配的圆圈单选按钮-->
+        <RadioButton
+            android:id="@+id/btn_add"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableTop="@mipmap/add"
+            android:gravity="center_vertical" />
+
+        <RadioButton
+            android:id="@+id/btn_mail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawablePadding="1dp"
+            android:drawableTop="@drawable/radiobutton_mail"
+            android:gravity="center_horizontal"
+            android:text="消息"
+            android:textColor="#000000" />
+
+        <RadioButton
+            android:id="@+id/btn_mine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawablePadding="1dp"
+            android:drawableTop="@drawable/radiobutton_people"
+            android:gravity="center_horizontal"
+            android:text="我的"
+            android:textColor="#000000" />
+    </RadioGroup>
+
+
+</RelativeLayout>

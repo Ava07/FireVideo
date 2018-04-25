@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="#FFFFFF">
+        <TextView
+            android:id="@+id/tv_three"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="消息"
+            android:textColor="#000000" />
+    </LinearLayout>
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <!--目前通过selector的方式解决了点击radiobutton，换图片-->
+
+        <RadioButton
+            android:id="@+id/btn_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawablePadding="1dp"
+            android:drawableTop="@drawable/radiobutton_homepage"
+            android:gravity="center_horizontal"
+            android:text="首页"
+            android:textColor="#000000" />
+
+
+        <RadioButton
+            android:id="@+id/btn_group"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawablePadding="1dp"
+            android:drawableTop="@drawable/radiobutton_group"
+            android:gravity="center_horizontal"
+            android:text="关注"
+            android:textColor="#000000" />
+
+        <!--用来消除掉RadioButton标配的圆圈单选按钮-->
+        <RadioButton
+            android:id="@+id/btn_add"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableTop="@mipmap/add"
+            android:gravity="center_vertical" />
+
+        <RadioButton
+            android:id="@+id/btn_mail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawablePadding="1dp"
+            android:drawableTop="@drawable/radiobutton_mail"
+            android:gravity="center_horizontal"
+            android:text="消息"
+            android:textColor="#000000" />
+
+        <RadioButton
+            android:id="@+id/btn_mine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawablePadding="1dp"
+            android:drawableTop="@drawable/radiobutton_people"
+            android:gravity="center_horizontal"
+            android:text="我的"
+            android:textColor="#000000" />
+    </RadioGroup>
+
+</RelativeLayout>
