@@ -27,7 +27,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">   <!--隐藏标题栏 -->
-        <activity android:name="com.example.lenovo.firevideo.activity.FindPasswordActivity">
+        <activity android:name="com.example.lenovo.firevideo.activity.GroupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,10 +35,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity"></activity>
-        <activity android:name=".activity.GroupActivity"> </activity>
+        <activity android:name=".activity.LoginActivity"> </activity>
         <activity android:name=".activity.LoginFastActivity"></activity>
         <activity android:name=".activity.BaseActivity"></activity>
-        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.FindPasswordActivity"></activity>
         <activity android:name=".activity.RegisterActivity"></activity>
         <activity android:name=".activity.MineActivity"></activity>
         <activity android:name=".activity.MailActivity"></activity>

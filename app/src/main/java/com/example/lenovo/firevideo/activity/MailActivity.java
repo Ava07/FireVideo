@@ -17,10 +17,9 @@ public class MailActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题栏
         // setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_mail);
+        jump();
     }
-    @Override
-    public void onStart() {
-        super.onStart();
+    public void jump(){
         btn_home = (RadioButton) findViewById(R.id.btn_home);
         btn_group = (RadioButton) findViewById(R.id.btn_group);
         btn_mail = (RadioButton) findViewById(R.id.btn_mail);
@@ -48,4 +47,5 @@ public class MailActivity extends AppCompatActivity {
         });
 
     }
+
 }

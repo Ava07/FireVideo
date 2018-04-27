@@ -18,10 +18,9 @@ public class MineActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题栏
         // setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_mine);
+        jump();
     }
-    @Override
-    public void onStart() {
-        super.onStart();
+    public void jump(){
         btn_home = (RadioButton) findViewById(R.id.btn_home);
         btn_group = (RadioButton) findViewById(R.id.btn_group);
         btn_mail = (RadioButton) findViewById(R.id.btn_mail);
@@ -29,6 +28,7 @@ public class MineActivity extends AppCompatActivity {
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent=new Intent(MineActivity.this,MainActivity.class);
                 startActivity(intent);
             }
@@ -48,4 +48,5 @@ public class MineActivity extends AppCompatActivity {
             }
         });
     }
+
 }

@@ -41,6 +41,7 @@ public class FindPasswordActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题栏
         setContentView(R.layout.activity_findpasswd);
         Bmob.initialize(this, "8304511e908e2215a5bc8f02043c04c4");
+        /*
         add();
         btn_reset=(Button)findViewById(R.id.btn_reset);
         btn_reset.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +50,8 @@ public class FindPasswordActivity extends AppCompatActivity {
                 resetPasswd();  //重置密码
             }
         });
-        //initViews();
+        initViews();
+        */
     }
     public void add(){
         UserInf userInf=new UserInf();

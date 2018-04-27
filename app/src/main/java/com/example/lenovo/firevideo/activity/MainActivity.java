@@ -49,39 +49,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题栏
         // setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main);
+        btn_home=(RadioButton)findViewById(R.id.btn_home);
+        btn_group=(RadioButton)findViewById(R.id.btn_group);
+        btn_mail=(RadioButton)findViewById(R.id.btn_mail);
+        btn_mine=(RadioButton)findViewById(R.id.btn_mine);
         initViews();
     }
 
     /*private void  loadHome(View view){
         startActivity(new Intent(this,GroupActivity.class));
     }*/
-    @Override
-    public void onStart(){
-        super.onStart();
-        btn_home=(RadioButton)findViewById(R.id.btn_home);
-        btn_group=(RadioButton)findViewById(R.id.btn_group);
-        btn_mail=(RadioButton)findViewById(R.id.btn_mail);
-        btn_mine=(RadioButton)findViewById(R.id.btn_mine);
+    public void jumpToGroup(){
         btn_group.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,GroupActivity.class);
             }
         });
+    }
+    public void jumpToMail(){
         btn_mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,MailActivity.class);
             }
         });
+    }
+    public void jumpToMine(){
         btn_mine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,MineActivity.class);
             }
         });
-
     }
+
+
     private void initViews() {
         vpager_four = (ViewPager) findViewById(R.id.vpager_four);
         tv_one = (TextView) findViewById(R.id.tv_one);
@@ -112,11 +115,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         listViews.add(mInflater.inflate(R.layout.view_three, null, false));
         vpager_four.setAdapter(new MyPagerAdapter(listViews));
         vpager_four.setCurrentItem(0);          //设置ViewPager当前页，从0开始算
-
         tv_one.setOnClickListener(this);
         tv_two.setOnClickListener(this);
         tv_three.setOnClickListener(this);
-
         vpager_four.addOnPageChangeListener(this);
     }
 

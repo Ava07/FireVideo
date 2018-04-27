@@ -15,8 +15,9 @@ public class GroupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题栏
         setContentView(R.layout.activity_group);
+        jump();
     }
-    public void init() {
+    public void jump() {
         //super.onStart();
         btn_home = (RadioButton) findViewById(R.id.btn_home);
         btn_group = (RadioButton) findViewById(R.id.btn_group);
