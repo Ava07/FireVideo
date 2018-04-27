@@ -19,7 +19,7 @@ import com.example.lenovo.firevideo.bean.UserInf;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
-
+//登陆界面
 public class LoginActivity extends AppCompatActivity {
     private Button login_btn_register;
     private Button login_btn_login;
@@ -29,7 +29,6 @@ public class LoginActivity extends AppCompatActivity {
     public static final String USER_PASSWORD = "user_password";
     public static final String USER_NAME = "user_name";
     private CheckBox Login_Remember;
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题栏

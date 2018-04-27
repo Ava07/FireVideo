@@ -13,7 +13,6 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import android.widget.Toast;
-
 public class BaseActivity extends Activity {
     public static String TAG = "bmob";
     protected ListView mListview;

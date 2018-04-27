@@ -24,10 +24,8 @@
         android:drawableLeft="@android:drawable/ic_lock_idle_lock"
         android:ems="10"
         android:hint="请输入您的密码"
-
         android:inputType="textPassword"
         />
-
     <EditText
         android:id="@+id/resetpwd_edit_pwd_new"
         android:layout_width="match_parent"

@@ -19,10 +19,8 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.LogInListener;
 import cn.bmob.v3.listener.QueryListener;
 
-
+//快速登陆界面
 public class LoginFastActivity extends BaseActivity {
-
-
     private String userinfomsg;
     private Button button_send = null;
     private EditText edittext = null;

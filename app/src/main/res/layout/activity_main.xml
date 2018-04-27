@@ -35,7 +35,6 @@
                 android:gravity="center"
                 android:text="直播"
                 android:textColor="#000000" />
-
             <TextView
                 android:id="@+id/tv_two"
                 android:layout_width="0dp"
@@ -55,7 +54,6 @@
                 android:textColor="#000000" />
 
         </LinearLayout>
-
         <ImageView
             android:id="@+id/img_cursor"
             android:layout_below="@+id/top_info"
@@ -63,7 +61,6 @@
             android:layout_height="wrap_content"
             android:scaleType="matrix"
             android:src="@mipmap/line" />
-
         <android.support.v4.view.ViewPager
             android:id="@+id/vpager_four"
             android:layout_below="@+id/img_cursor"
@@ -82,7 +79,6 @@
             android:padding="8dp">
 
             <!--目前通过selector的方式解决了点击radiobutton，换图片-->
-
             <RadioButton
                 android:id="@+id/btn_home"
                 android:layout_width="0dp"
@@ -95,8 +91,6 @@
                 android:gravity="center_horizontal"
                 android:text="首页"
                 android:textColor="#000000" />
-
-
             <RadioButton
                 android:id="@+id/btn_group"
                 android:layout_width="0dp"
@@ -120,7 +114,6 @@
                 android:button="@null"
                 android:drawableTop="@mipmap/add"
                 android:gravity="center_vertical" />
-
             <RadioButton
                 android:id="@+id/btn_mail"
                 android:layout_width="0dp"
@@ -133,7 +126,6 @@
                 android:gravity="center_horizontal"
                 android:text="消息"
                 android:textColor="#000000" />
-
             <RadioButton
                 android:id="@+id/btn_mine"
                 android:layout_width="0dp"
@@ -147,8 +139,5 @@
                 android:text="我的"
                 android:textColor="#000000" />
         </RadioGroup>
-
     </RelativeLayout>
-
-
 </RelativeLayout>

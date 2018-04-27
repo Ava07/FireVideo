@@ -2,12 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:background="#FFFFFF">
-
     <TextView
         android:id="@+id/tv_three"
         android:layout_width="fill_parent"
@@ -40,8 +38,6 @@
             android:gravity="center_horizontal"
             android:text="首页"
             android:textColor="#000000" />
-
-
         <RadioButton
             android:id="@+id/btn_group"
             android:layout_width="0dp"
@@ -65,7 +61,6 @@
             android:button="@null"
             android:drawableTop="@mipmap/add"
             android:gravity="center_vertical" />
-
         <RadioButton
             android:id="@+id/btn_mail"
             android:layout_width="0dp"
@@ -78,7 +73,6 @@
             android:gravity="center_horizontal"
             android:text="消息"
             android:textColor="#000000" />
-
         <RadioButton
             android:id="@+id/btn_mine"
             android:layout_width="0dp"
@@ -92,5 +86,4 @@
             android:text="我的"
             android:textColor="#000000" />
     </RadioGroup>
-
 </RelativeLayout>

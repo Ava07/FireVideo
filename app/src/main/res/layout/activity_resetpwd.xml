@@ -16,8 +16,6 @@
         android:layout_alignStart="@+id/resetpwd_edit_pwd_new"
         android:layout_alignRight="@+id/resetpwd_edit_pwd_new"
         android:layout_alignEnd="@+id/resetpwd_edit_pwd_new" />
-
-
     <EditText
         android:drawableLeft="@android:drawable/ic_lock_idle_lock"
         android:layout_width="fill_parent"

@@ -8,7 +8,7 @@ import android.view.Window;
 import android.widget.RadioButton;
 
 import com.example.lenovo.firevideo.R;
-
+//关注界面
 public class GroupActivity extends AppCompatActivity {
     private RadioButton btn_group,btn_home,btn_add,btn_mail,btn_mine;
     public void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,6 @@ public class GroupActivity extends AppCompatActivity {
         //requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题栏
         setContentView(R.layout.activity_group);
     }
-
     public void init() {
         //super.onStart();
         btn_home = (RadioButton) findViewById(R.id.btn_home);

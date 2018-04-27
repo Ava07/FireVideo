@@ -9,6 +9,7 @@ import android.widget.RadioButton;
 
 import com.example.lenovo.firevideo.R;
 
+//个人中心界面
 public class MineActivity extends AppCompatActivity {
     private RadioButton btn_group,btn_home,btn_add,btn_mail,btn_mine;
     @Override

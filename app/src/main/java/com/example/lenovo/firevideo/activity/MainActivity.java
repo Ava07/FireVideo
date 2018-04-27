@@ -24,6 +24,8 @@ import java.util.ArrayList;
 /**
  * Created by yinyin on 2018/2/25 .
  */
+
+//首页界面
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,
         ViewPager.OnPageChangeListener {
 
@@ -32,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tv_one;
     private TextView tv_two;
     private TextView tv_three;
-
     private ArrayList<View> listViews;
     private int offset = 0;//移动条图片的偏移量
     private int currIndex = 0;//当前页面的编号

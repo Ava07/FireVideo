@@ -16,12 +16,12 @@ public class UserInf extends BmobUser{
     private String UserCity;//用户所处城市
     private String UserHead;//用户头像
     private String PhoneNum;//就是用户手机号
-    private static String UserKey;//登陆密码
-    private static String UnderWrite;//个性签名
-    public static Integer Total_Upload_Video;//用户上传短视频总数
-    public static Integer Total_Upload_Live;//用户直播总数
-    public static Integer Total_Like;//用户总点赞量
-    public static Integer Total_Energy_Value;//用户总能量值
+    private  String UserKey;//登陆密码
+    private  String UnderWrite;//个性签名
+    public  Integer Total_Upload_Video;//用户上传短视频总数
+    public  Integer Total_Upload_Live;//用户直播总数
+    public Integer Total_Like;//用户总点赞量
+    public  Integer Total_Energy_Value;//用户总能量值
     public UserInf(){
 
     }
@@ -46,7 +46,7 @@ public class UserInf extends BmobUser{
         UserCity = userCity;
     }
 
-    public static void setUnderWrite(String underWrite) {
+    public void setUnderWrite(String underWrite) {
         UnderWrite = underWrite;
     }
 
@@ -58,11 +58,11 @@ public class UserInf extends BmobUser{
         UserId = userId;
     }
 
-    public static void setTotal_Upload_Video(Integer total_Upload_Video) {
+    public  void setTotal_Upload_Video(Integer total_Upload_Video) {
         Total_Upload_Video = total_Upload_Video;
     }
 
-    public static void setUserKey(String userKey) {
+    public  void setUserKey(String userKey) {
         UserKey = userKey;
     }
 
@@ -75,15 +75,15 @@ public class UserInf extends BmobUser{
         UserSex = userSex;
     }
 
-    public static void setTotal_Energy_Value(Integer total_Energy_Value) {
+    public  void setTotal_Energy_Value(Integer total_Energy_Value) {
         Total_Energy_Value = total_Energy_Value;
     }
 
-    public static void setTotal_Like(Integer total_Like) {
+    public void setTotal_Like(Integer total_Like) {
         Total_Like = total_Like;
     }
 
-    public static void setTotal_Upload_Live(Integer total_Upload_Live) {
+    public  void setTotal_Upload_Live(Integer total_Upload_Live) {
         Total_Upload_Live = total_Upload_Live;
     }
 
@@ -107,7 +107,7 @@ public class UserInf extends BmobUser{
         return PhoneNum;
     }
 
-    public static Integer getTotal_Upload_Video() {
+    public Integer getTotal_Upload_Video() {
         return Total_Upload_Video;
     }
 
@@ -124,15 +124,15 @@ public class UserInf extends BmobUser{
         return Username;
     }
 
-    public static Integer getTotal_Like() {
+    public  Integer getTotal_Like() {
         return Total_Like;
     }
 
-    public static String getUserKey() {
+    public String getUserKey() {
         return UserKey;
     }
 
-    public static String getUnderWrite() {
+    public  String getUnderWrite() {
         return UnderWrite;
     }
 
@@ -140,11 +140,11 @@ public class UserInf extends BmobUser{
         return UserSex;
     }
 
-    public static Integer getTotal_Upload_Live() {
+    public  Integer getTotal_Upload_Live() {
         return Total_Upload_Live;
     }
 
-    public static Integer getTotal_Energy_Value() {
+    public  Integer getTotal_Energy_Value() {
         return Total_Energy_Value;
     }
 

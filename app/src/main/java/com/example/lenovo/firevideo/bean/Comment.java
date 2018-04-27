@@ -6,7 +6,7 @@ import cn.bmob.v3.BmobObject;
 public class Comment extends BmobObject {
     private String CommentId;//评论的ID
     private String UserId;//发起评论的用户ID
-    private static String  Comment_Total_Like_Num;//总点赞量
+    private  Integer  Comment_Total_Like;//总点赞量
     private String Comment_Content;//评论内容
     public Comment(){
 
@@ -24,8 +24,8 @@ public class Comment extends BmobObject {
         Comment_Content = comment_Content;
     }
 
-    public static void setComment_Total_Like_Num(String comment_Total_Like_Num) {
-        Comment_Total_Like_Num = comment_Total_Like_Num;
+    public  void setComment_Total_Like(Integer comment_Total_Like) {
+        Comment_Total_Like = comment_Total_Like;
     }
 
     public String getCommentId() {
@@ -40,7 +40,7 @@ public class Comment extends BmobObject {
         return Comment_Content;
     }
 
-    public static String getComment_Total_Like_Num() {
-        return Comment_Total_Like_Num;
+    public  Integer getComment_Total_Like() {
+        return Comment_Total_Like;
     }
 }
