@@ -159,7 +159,7 @@
 
             <!--编辑按钮-->
             <Button
-                android:id="@+id/edit"
+                android:id="@+id/btn_edit"
                 android:layout_below="@+id/head_right"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

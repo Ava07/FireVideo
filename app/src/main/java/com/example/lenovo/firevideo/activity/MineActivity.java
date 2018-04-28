@@ -1,11 +1,13 @@
 package com.example.lenovo.firevideo.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -15,6 +17,7 @@ import com.example.lenovo.firevideo.R;
 public class MineActivity extends AppCompatActivity {
     private RadioButton btn_group,btn_home,btn_add,btn_mail,btn_mine;
     private RadioGroup radioGroup_mine;
+    private Button btn_edit;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +29,7 @@ public class MineActivity extends AppCompatActivity {
         btn_mail = (RadioButton) findViewById(R.id.btn_mail);
         btn_mine = (RadioButton) findViewById(R.id.btn_mine);
         radioGroup_mine=(RadioGroup)findViewById(R.id.radioGroup_mine);
+        btn_edit=(Button)findViewById(R.id.btn_edit);
         jump();
 
     }
@@ -49,6 +53,13 @@ public class MineActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(MineActivity.this,MailActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(MineActivity.this,EditUserinfoActivity.class);
                 startActivity(intent);
             }
         });

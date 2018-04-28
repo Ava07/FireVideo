@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+    <view
+        android:layout_width="match_parent"
+        android:background="#FFFFFF"
+        android:layout_height="20dp"></view>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="头像"
+            android:id="@+id/tv_head"
+            android:textColor="#000000"
+            android:layout_marginLeft="25dp"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"/>
+
+        <ImageView
+            android:id="@+id/iv_head"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:src="@mipmap/default_useravatar" />
+    </RelativeLayout>
+    <view
+        android:layout_width="match_parent"
+        android:background="#33000000"
+        android:layout_height="1dp"></view>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/user_phonenum"
+        android:layout_height="48dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户手机号"
+            android:id="@+id/tv_phonenum"
+            android:textSize="20sp"
+            android:layout_marginLeft="25dp"
+            android:layout_centerVertical="true"
+            android:textColor="#000000"/>
+    </RelativeLayout>
+    <view
+        android:layout_width="match_parent"
+        android:background="#33000000"
+        android:layout_height="1dp"></view>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/user_sex"
+        android:layout_height="48dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/tv_sex"
+            android:text="用户性别"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/sex_boy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="93dp"
+            android:layout_weight="1"
+            android:drawablePadding="1dp"
+            android:gravity="center_horizontal"
+            android:text="男"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/sex_girl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="11dp"
+            android:layout_weight="1"
+            android:drawablePadding="1dp"
+            android:gravity="center_horizontal"
+            android:text="女"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <view
+        android:layout_width="match_parent"
+        android:background="#33000000"
+        android:layout_height="1dp"></view>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/user_city"
+        android:layout_height="48dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/tv_city"
+            android:text="用户所在城市"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <view
+        android:layout_width="match_parent"
+        android:background="#33000000"
+        android:layout_height="1dp"></view>
+
+
+</LinearLayout>
