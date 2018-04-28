@@ -17,13 +17,13 @@ public class MailActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题栏
         // setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_mail);
-        jump();
-    }
-    public void jump(){
         btn_home = (RadioButton) findViewById(R.id.btn_home);
         btn_group = (RadioButton) findViewById(R.id.btn_group);
         btn_mail = (RadioButton) findViewById(R.id.btn_mail);
         btn_mine = (RadioButton) findViewById(R.id.btn_mine);
+        jump();
+    }
+    public void jump(){
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +45,6 @@ public class MailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
 }

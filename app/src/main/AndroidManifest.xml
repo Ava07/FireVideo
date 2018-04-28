@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Android="http://schemas.android.com/apk/res-auto"
     package="com.example.lenovo.firevideo">
     <uses-sdk
-
         android:minSdkVersion="8"
 
         android:targetSdkVersion="19" />
@@ -27,20 +27,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">   <!--隐藏标题栏 -->
-        <activity android:name="com.example.lenovo.firevideo.activity.GroupActivity">
+        <activity android:name="com.example.lenovo.firevideo.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MineActivity"></activity>
         <activity android:name=".activity.LoginActivity"> </activity>
         <activity android:name=".activity.LoginFastActivity"></activity>
         <activity android:name=".activity.BaseActivity"></activity>
         <activity android:name=".activity.FindPasswordActivity"></activity>
         <activity android:name=".activity.RegisterActivity"></activity>
-        <activity android:name=".activity.MineActivity"></activity>
+        <activity android:name=".activity.GroupActivity"></activity>
         <activity android:name=".activity.MailActivity"></activity>
 
     </application>

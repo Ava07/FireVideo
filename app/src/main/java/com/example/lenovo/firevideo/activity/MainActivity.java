@@ -54,36 +54,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_mail=(RadioButton)findViewById(R.id.btn_mail);
         btn_mine=(RadioButton)findViewById(R.id.btn_mine);
         initViews();
+        jump();
     }
 
-    /*private void  loadHome(View view){
-        startActivity(new Intent(this,GroupActivity.class));
-    }*/
-    public void jumpToGroup(){
+    public void jump(){
         btn_group.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,GroupActivity.class);
+                startActivity(intent);
             }
         });
-    }
-    public void jumpToMail(){
         btn_mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,MailActivity.class);
+                startActivity(intent);
             }
         });
-    }
-    public void jumpToMine(){
         btn_mine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,MineActivity.class);
+                startActivity(intent);
             }
         });
     }
-
 
     private void initViews() {
         vpager_four = (ViewPager) findViewById(R.id.vpager_four);
