@@ -4,9 +4,10 @@ import android.widget.ImageView;
 
 import java.util.Date;
 
+import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
 //用户类
-public class UserInf extends BmobUser{
+public class UserInf extends BmobObject {
     private String UserId;//用户ID
     private String Username;//用户名
     private String UserSex;//用户性别
@@ -66,7 +67,7 @@ public class UserInf extends BmobUser{
         UserKey = userKey;
     }
 
-    @Override
+
     public void setUsername(String username) {
         Username = username;
     }
@@ -119,7 +120,6 @@ public class UserInf extends BmobUser{
         return UserHead;
     }
 
-    @Override
     public String getUsername() {
         return Username;
     }

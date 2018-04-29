@@ -112,7 +112,7 @@ public class FindPasswordActivity extends AppCompatActivity {
                     for (UserInf userInf : object) {
                         //获得数据的objectId信息
                         UserInf userInf1=new UserInf();
-                        userInf1.setPassword(new_pwd);
+                        userInf1.setUserKey(new_pwd);
                         userInf1.update(userInf.getObjectId(), new UpdateListener() {
                             @Override
                             public void done(BmobException e) {

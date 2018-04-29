@@ -98,11 +98,35 @@ public class LoginActivity extends AppCompatActivity {
     public  void login(final String username, final String password) {
         UserInf userInfoBean = new UserInf();
         userInfoBean.setUsername(username);
-        userInfoBean.setPassword(password);
+        //userInfoBean.setPassword(password);
+        userInfoBean.setUserKey(password);
+        /*
         userInfoBean.login(new SaveListener<Object>() {
             @Override
             public void done(Object o, BmobException e) {
                 if(o!=null){
+                    Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
+                    //跳转到主页   保存账号密码到SharedPreferences
+                    if(Login_Remember.isChecked()){
+                        PreferenceUtil.put(USER_NAME,username);
+                        PreferenceUtil.put(USER_PASSWORD,password);
+                    }
+                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else {
+                    if(e.getErrorCode()==101){
+                        Toast.makeText(LoginActivity.this,"账号密码错误",Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });  */
+        userInfoBean.save(new SaveListener<String>() {
+            @Override
+            public void done(String s, BmobException e) {
+                if(s!=null){
                     Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
                     //跳转到主页   保存账号密码到SharedPreferences
                     if(Login_Remember.isChecked()){
