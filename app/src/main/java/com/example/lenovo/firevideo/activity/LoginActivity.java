@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lenovo.firevideo.indicators.AVLoadingIndicatorView;
 import com.example.lenovo.firevideo.utils.PreferenceUtil;
 import com.example.lenovo.firevideo.R;
 import com.example.lenovo.firevideo.bean.UserInf;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String USER_PASSWORD = "user_password";
     public static final String USER_NAME = "user_name";
     private CheckBox Login_Remember;
+    private AVLoadingIndicatorView avi;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题栏
@@ -40,6 +42,10 @@ public class LoginActivity extends AppCompatActivity {
         login_edit_account=(EditText)findViewById(R.id.login_edit_account);
         login_edit_pwd=(EditText)findViewById(R.id.login_edit_pwd);
         Login_Remember =(CheckBox)findViewById(R.id.Login_Remember);
+        String indicator=getIntent().getStringExtra("indicator");
+        avi= (AVLoadingIndicatorView) findViewById(R.id.avi);
+        avi.setIndicator(indicator);
+        hideClick(avi);
         Bmob.initialize(this, "8304511e908e2215a5bc8f02043c04c4");
         // initViews();
         //这里就是获取有没有登录过，如果登录过了，就在这个缓存的消息
@@ -71,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
             //跳转至修改忘记密码界面
             @Override
             public void onClick(View v) {
+                showClick(avi);
                 jump();
             }
         });
@@ -123,10 +130,12 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });  */
+        //2018.5.1.在登陆界面，登陆失败
         userInfoBean.save(new SaveListener<String>() {
             @Override
             public void done(String s, BmobException e) {
                 if(s!=null){
+                    hideClick(avi);
                     Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
                     //跳转到主页   保存账号密码到SharedPreferences
                     if(Login_Remember.isChecked()){
@@ -145,6 +154,15 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    public void hideClick(View view) {
+        avi.hide();
+        // or avi.smoothToHide();
+    }
+
+    public void showClick(View view) {
+        avi.show();
+        // or avi.smoothToShow();
     }
 
 }

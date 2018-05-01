@@ -82,6 +82,18 @@
             android:textColor="#ffffff"
             android:textSize="20dp"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+        <com.example.lenovo.firevideo.indicators.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AVLoadingIndicatorView.Large"
+            />
+    </LinearLayout>
     <RelativeLayout
         android:id="@+id/login_success_view"
         android:layout_width="match_parent"
