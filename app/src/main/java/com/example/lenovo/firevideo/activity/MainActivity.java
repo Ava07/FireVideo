@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,GroupActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btn_mail.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,MailActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btn_mine.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,MineActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

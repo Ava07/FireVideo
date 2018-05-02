@@ -29,6 +29,7 @@ public class MailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MailActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btn_group.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +37,7 @@ public class MailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MailActivity.this,GroupActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btn_mine.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +45,7 @@ public class MailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MailActivity.this,MineActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

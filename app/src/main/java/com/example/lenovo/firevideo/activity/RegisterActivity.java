@@ -60,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -75,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
             // BmobUser bmobUser = new BmobUser();
             // bmobUser.setUsername(set_userName);
             // bmobUser.setPassword(reset_pwd);
-            UserInf userInf = new UserInf();
+            final UserInf userInf = new UserInf();
             userInf.setUsername(set_userName);
             userInf.setUserKey(reset_pwd);
             //需要有一个查找是否有用户名重名的情况，没有重名的情况下，才可以将用户信息存储到服务器
@@ -83,7 +84,8 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void done(String s, BmobException e) {
                     if (e == null) {
-                        //Log.d("用户ID", s);
+                       // Log.d("用户ID", s);
+                        userInf.setUserId(s);
                         PreferenceUtil.put(USER_ID, s);//USER_ID就是用户ID
                         Log.d("用户ID", s);
                         Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();

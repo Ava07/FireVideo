@@ -37,9 +37,9 @@ public class MineActivity extends AppCompatActivity {
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent=new Intent(MineActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btn_group.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +47,7 @@ public class MineActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent= new Intent(MineActivity.this,GroupActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btn_mail.setOnClickListener(new View.OnClickListener() {
@@ -54,13 +55,16 @@ public class MineActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent= new Intent(MineActivity.this,MailActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(MineActivity.this,EditUserinfoActivity.class);
+               // Log.d("编辑个人信息",btn_edit.toString());
                 startActivity(intent);
+                finish();
             }
         });
     }

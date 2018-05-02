@@ -65,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 //跳闸至注册界面
                 Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -74,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this,FindPasswordActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

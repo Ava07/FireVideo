@@ -27,6 +27,7 @@ public class GroupActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(GroupActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btn_mail.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +35,7 @@ public class GroupActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(GroupActivity.this,MailActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btn_mine.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +43,7 @@ public class GroupActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent= new Intent(GroupActivity.this,MineActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

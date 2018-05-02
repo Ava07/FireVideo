@@ -70,7 +70,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/tv_region"
+            android:id="@+id/edt_region"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
