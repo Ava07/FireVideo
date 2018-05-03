@@ -42,9 +42,8 @@
         <activity android:name=".activity.MainActivity"></activity>
         <activity android:name=".activity.GroupActivity"></activity>
         <activity android:name=".activity.MailActivity"></activity>
-        <activity android:name=".activity.EditPhonenumActivity"></activity>
-        <activity android:name=".activity.EditUserinfoActivity"></activity>
-        <activity android:name=".activity.EditUserCityActivity"></activity>
+        <activity android:name=".activity.EditUserInfActivity"></activity>
+        <activity android:name=".activity.ShowUserInfoActivity"></activity>
 
     </application>
 
