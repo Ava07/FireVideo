@@ -4,6 +4,7 @@ package com.example.lenovo.firevideo.permission;
  * Created by dfqin on 2017/1/22.
  */
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +13,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+
+import com.yanzhenjie.nohttp.Logger;
 
 import java.io.Serializable;
 
@@ -69,6 +72,7 @@ public class PermissionActivity extends AppCompatActivity {
     // 请求权限兼容低版本
     private void requestPermissions(String[] permission) {
         ActivityCompat.requestPermissions(this, permission, PERMISSION_REQUEST_CODE);
+
     }
 
 

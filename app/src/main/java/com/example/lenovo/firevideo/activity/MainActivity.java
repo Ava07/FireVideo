@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_group=(RadioButton)findViewById(R.id.btn_group);
         btn_mail=(RadioButton)findViewById(R.id.btn_mail);
         btn_mine=(RadioButton)findViewById(R.id.btn_mine);
+        btn_add=(RadioButton)findViewById(R.id.btn_add);
         initViews();
         jump();
     }
@@ -78,6 +79,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,MineActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,LiveAdVideoActivity.class);
                 startActivity(intent);
                 finish();
             }

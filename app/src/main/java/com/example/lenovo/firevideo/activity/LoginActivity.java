@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         login_btn_login.setOnClickListener(new View.OnClickListener() {
-            //跳转至修改忘记密码界面
+            //跳转至登陆
             @Override
             public void onClick(View v) {
                 showClick(avi);

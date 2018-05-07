@@ -21,6 +21,7 @@ public class MailActivity extends AppCompatActivity {
         btn_group = (RadioButton) findViewById(R.id.btn_group);
         btn_mail = (RadioButton) findViewById(R.id.btn_mail);
         btn_mine = (RadioButton) findViewById(R.id.btn_mine);
+        btn_add=(RadioButton)findViewById(R.id.btn_add);
         jump();
     }
     public void jump(){
@@ -44,6 +45,14 @@ public class MailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MailActivity.this,MineActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MailActivity.this,LiveAdVideoActivity.class);
                 startActivity(intent);
                 finish();
             }

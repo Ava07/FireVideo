@@ -1,9 +1,10 @@
 package com.example.lenovo.firevideo.bean;
 
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 //直播类
-public class Live extends BmobObject {
+public class Live extends BmobFile {
     private String LiveId;//直播房间号
     private String LiveFace;//直播封面
     private Integer Line_Watch_Num;//在线观看人数

@@ -28,6 +28,7 @@ public class MineActivity extends AppCompatActivity {
         btn_mine = (RadioButton) findViewById(R.id.btn_mine);
         radioGroup_mine=(RadioGroup)findViewById(R.id.radioGroup_mine);
         btn_edit=(Button)findViewById(R.id.btn_edit);
+        btn_add=(RadioButton)findViewById(R.id.btn_add);
         jump();
 
     }
@@ -61,6 +62,14 @@ public class MineActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent= new Intent(MineActivity.this,EditUserInfActivity.class);
                // Log.d("编辑个人信息",btn_edit.toString());
+                startActivity(intent);
+                finish();
+            }
+        });
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MineActivity.this,LiveAdVideoActivity.class);
                 startActivity(intent);
                 finish();
             }

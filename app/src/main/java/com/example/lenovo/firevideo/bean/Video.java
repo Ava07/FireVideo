@@ -1,13 +1,16 @@
 package com.example.lenovo.firevideo.bean;
 
-import android.widget.ImageView;
 
-import cn.bmob.v3.BmobObject;
+import android.graphics.Bitmap;
+import android.widget.Button;
+
+import cn.bmob.v3.datatype.BmobFile;
 
 //视频类
-public class Video extends BmobObject {
+public class Video extends BmobFile {
     private String VideoId;//视频ID
-    private String VideoFace;//上传视频封面
+    private Bitmap VideoFace;//上传视频封面
+    private String VideoUrl;//视频的地址
     public  Integer Video_Total_like;//视频总点赞数
     public  Integer Video_Comment_Num;//评论量
     public  Integer Video_Energy_Value;//视频能量值
@@ -15,12 +18,16 @@ public class Video extends BmobObject {
     public Video(){
 
     }
+
+    public void setVideoUrl(String videoUrl) {
+        this.VideoUrl = videoUrl;
+    }
     public void setVideoId(String videoId){
         this.VideoId=videoId;
     }
 
-    public void setVideoFace(String videoFace) {
-        VideoFace = videoFace;
+    public void setVideoFace(Bitmap bitmap){
+        this.VideoFace=bitmap;
     }
 
     public   void setVideo_Total_like(Integer video_Total_like) {
@@ -42,9 +49,7 @@ public class Video extends BmobObject {
         return  VideoId;
     }
 
-    public String getVideoFace() {
-        return VideoFace;
-    }
+    public Bitmap getVideoFace(){return VideoFace;}
 
     public   Integer getVideo_Comment_Num() {
         return Video_Comment_Num;
@@ -60,5 +65,9 @@ public class Video extends BmobObject {
 
     public String getVideoTag() {
         return VideoTag;
+    }
+
+    public String getVideoUrl() {
+        return VideoUrl;
     }
 }
