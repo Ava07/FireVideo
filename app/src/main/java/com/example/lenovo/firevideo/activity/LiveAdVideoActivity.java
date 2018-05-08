@@ -45,6 +45,7 @@ public class LiveAdVideoActivity extends AppCompatActivity {
     public BmobFile bmobFile;
     public BmobFile bitmap_bmobFile;
     public FileOutputStream out;
+    public String Video_FileName;//视频的文件名
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,20 @@ public class LiveAdVideoActivity extends AppCompatActivity {
                     Logger.d("requestPermission: 用户没有给了权限");
                 }
             }, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (PermissionsUtil.hasPermission(this, Manifest.permission.READ_PHONE_STATE)) {
+            //已经给了权限
+        } else {
+            PermissionsUtil.requestPermission(getApplication(), new PermissionListener() {
+                @Override
+                public void permissionGranted(@NonNull String[] permissions) {
+                    //给了权限
+                }
+                @Override
+                public void permissionDenied(@NonNull String[] permissions) {
+                    Logger.d("requestPermission: 用户没有给了权限");
+                }
+            }, Manifest.permission.READ_PHONE_STATE);
         }
     }
     public void jump(){
@@ -109,6 +124,7 @@ public class LiveAdVideoActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {//是否选择，没选择就不会继续
@@ -122,11 +138,14 @@ public class LiveAdVideoActivity extends AppCompatActivity {
             bmobFile = new BmobFile(video_file);
             bitmap=getVideoThumbnail(img_path);
             //下面完成的是，讲缩略图保存到本地
-            File file = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis()+".jpg");
+            Video_FileName=video_file.getName();  //获取文件名
+            Log.i("bmobFile_Name",Video_FileName);
+            //File file = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis()+".jpg");
+            //下面，终于实现了视频和视频缩略图之间的联系，即：缩略图的名称（除去后缀）就是视频文件的名称
+            File file = new File(Environment.getExternalStorageDirectory(), Video_FileName+".jpg");
             try {
                 out = new FileOutputStream(file);
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-                //System.out.println("___________保存的__sd___下_______________________");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -136,19 +155,31 @@ public class LiveAdVideoActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            //上面部分已经实现了讲缩略图保存至本地目录下
+            //下面部分实现了图片和视频从本地上传到服务器，但如何让缩略图和视频之间产生关联呢？
+
             Toast.makeText(LiveAdVideoActivity.this,"保存已经至"+Environment.getExternalStorageDirectory()+"下", Toast.LENGTH_SHORT).show();
-        }
-        //上面部分已经实现了讲缩略图保存至本地目录下
-        //Toast.makeText(LiveAdVideoActivity.this, "上传文件成功:" +bmobFile.getFileUrl(),Toast.LENGTH_SHORT).show();
+            bitmap_bmobFile= new BmobFile(file);
+            bitmap_bmobFile.uploadblock(new UploadFileListener() {
+                @Override
+                public void done(BmobException e) {
+                    if(e==null){
+                        Toast.makeText(LiveAdVideoActivity.this, "上传图片文件成功:" +bitmap_bmobFile.getFileUrl(),Toast.LENGTH_SHORT).show();
+                        Log.i("上传图片成功",bitmap_bmobFile.getFileUrl());
+                    }else{
+                        Log.i("上传图片文件失败",e.getMessage());
+                    }
+                }
+            });
             bmobFile.uploadblock(new UploadFileListener() {
                 @Override
                 public void done(BmobException e) {
                     if(e==null){
                         //bmobFile.getFileUrl()--返回的上传文件的完整地址
-                       Toast.makeText(LiveAdVideoActivity.this, "上传文件成功:" +bmobFile.getFileUrl(),Toast.LENGTH_SHORT).show();
-                        Log.i("上传成功",bmobFile.getFileUrl());
+                        Toast.makeText(LiveAdVideoActivity.this, "上传视频文件成功:" +bmobFile.getFileUrl(),Toast.LENGTH_SHORT).show();
+                        Log.i("上传视频成功",bmobFile.getFileUrl());
                     }else{
-                        Log.i("上传文件失败",e.getMessage());
+                        Log.i("上传视频文件失败",e.getMessage());
                     }
 
                 }
@@ -157,8 +188,11 @@ public class LiveAdVideoActivity extends AppCompatActivity {
                     // 返回的上传进度（百分比）
                 }
             });
-
         }
+        //Toast.makeText(LiveAdVideoActivity.this, "上传文件成功:" +bmobFile.getFileUrl(),Toast.LENGTH_SHORT).show();
+
+    }
+
 
     public Bitmap getVideoThumbnail(String filePath) {
         Bitmap b=null;
@@ -180,4 +214,6 @@ public class LiveAdVideoActivity extends AppCompatActivity {
         }
         return b;
     }
+
+
 }
