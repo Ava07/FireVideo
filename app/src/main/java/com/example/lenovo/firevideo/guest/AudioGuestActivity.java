@@ -19,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.example.lenovo.firevideo.BaseActivity;
 import com.example.lenovo.firevideo.R;
 import com.example.lenovo.firevideo.adapter.AudioLineAdapter;
 import com.example.lenovo.firevideo.adapter.LiveMessageAdapter;
@@ -269,6 +268,7 @@ public class AudioGuestActivity extends com.example.lenovo.firevideo.BaseActivit
 
         /**
          * rtmp 连接成功 视频即将播放；视频播放前的操作可以在此接口中进行操作
+         * 说明：RTMP 服务器连接成功，视频正在缓存
          */
         @Override
         public void onRtmpPlayerOk() {
@@ -285,6 +285,7 @@ public class AudioGuestActivity extends com.example.lenovo.firevideo.BaseActivit
 
         /**
          * rtmp 开始播放 视频开始播放
+         * 说明：第一帧视频图像
          */
         @Override
         public void onRtmpPlayerStart() {
@@ -432,8 +433,11 @@ public class AudioGuestActivity extends com.example.lenovo.firevideo.BaseActivit
 
 
         /**
+         * 方法：游客音频连麦接通
          * 连线接通后回调
-         * @param
+         * @param strLivePeerId：连麦者标识id（用于标识连麦用户，每次连麦随机生成)
+         * @param strUserId：游客在自己的业务平台的Id
+         * @param strUserData **：游客加入RTC连接的自定义参数体
          */
         @Override
         public void onRTCOpenAudioLine(final String strLivePeerId, final String strUserId, final String strUserData) {

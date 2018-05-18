@@ -6,12 +6,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.lenovo.firevideo.R;
 import com.example.lenovo.firevideo.model.LiveBean;
 
-
-
-/**
- * Created by liuxiaozhong on 2017-09-14.
- */
-
 public class LiveListAdapter extends BaseQuickAdapter<LiveBean,BaseViewHolder> {
 
     public LiveListAdapter() {

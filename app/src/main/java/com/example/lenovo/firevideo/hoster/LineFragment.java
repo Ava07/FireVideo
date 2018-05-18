@@ -20,10 +20,6 @@ import com.example.lenovo.firevideo.model.LineBean;
 import org.anyrtc.rtmpc_hybrid.RTMPCAudioHosterKit;
 import org.anyrtc.rtmpc_hybrid.RTMPCHosterKit;
 
-/**
- * Created by liuxiaozhong on 2017/9/24.
- */
-
 public class LineFragment extends Fragment implements HosterActivity.LineListener,BaseQuickAdapter.OnItemChildClickListener{
 
     private RecyclerView lineList;

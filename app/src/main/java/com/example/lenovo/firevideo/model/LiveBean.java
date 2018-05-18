@@ -2,10 +2,6 @@ package com.example.lenovo.firevideo.model;
 
 import java.io.Serializable;
 
-/**
- * Created by liuxiaozhong on 2017-09-22.
- */
-
 public class LiveBean implements Serializable{
 
     public String mRtmpPullUrl;

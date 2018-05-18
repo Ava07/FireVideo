@@ -13,10 +13,6 @@ import android.graphics.drawable.Drawable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by Jack Wang on 2016/8/5.
- */
-
 public abstract class Indicator extends Drawable implements Animatable {
 
     private HashMap<ValueAnimator,ValueAnimator.AnimatorUpdateListener> mUpdateListeners=new HashMap<>();

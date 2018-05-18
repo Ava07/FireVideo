@@ -11,9 +11,6 @@ import com.gyf.barlibrary.ImmersionBar;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by Skyline on 2016/5/24.
- */
 public abstract class BaseActivity extends AppCompatActivity {
     private Unbinder unbindr;
     protected ImmersionBar mImmersionBar;

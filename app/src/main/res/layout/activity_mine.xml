@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".PeopleActivity">
+    tools:context=".activity.MineActivity">
 
     <!--个人中心界面-->
     <RelativeLayout

@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.lenovo.firevideo.activity.MainActivity;
-
 public class SplashActivity extends Activity {
 
     @Override

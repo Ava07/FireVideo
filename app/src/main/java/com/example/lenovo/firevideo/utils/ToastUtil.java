@@ -8,9 +8,6 @@ import android.widget.Toast;
 
 import com.example.lenovo.firevideo.app.FireVideoApp;
 
-/**
- * Created by Skyline on 2016/5/24.
- */
 public class ToastUtil {
     private static Context context = FireVideoApp.App();
     private static Toast mToast;

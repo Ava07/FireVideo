@@ -29,10 +29,6 @@ import java.util.TimerTask;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * Created by KathLine on 2016/12/30.
- */
-
 public class KeyboardDialogFragment extends AppBaseDialogFragment {
 
     @BindView(R.id.close)

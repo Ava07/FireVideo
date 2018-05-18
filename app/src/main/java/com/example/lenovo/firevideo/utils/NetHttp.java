@@ -6,10 +6,6 @@ import com.yanzhenjie.nohttp.rest.RequestQueue;
 import com.yanzhenjie.nohttp.rest.Response;
 import com.yanzhenjie.nohttp.rest.SimpleResponseListener;
 
-/**
- * Created by liuxiaozhong on 2017/12/18.
- */
-
 public class NetHttp {
 
     private static NetHttp instance;

@@ -1,9 +1,5 @@
 package com.example.lenovo.firevideo.model;
 
-/**
- * Created by liuxiaozhong on 2017/9/24.
- */
-
 public class LineBean {
     public String peerId;
     public String name;

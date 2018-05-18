@@ -11,10 +11,6 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by KathLine on 2016/12/30.
- */
-
 public abstract class AppBaseDialogFragment extends DialogFragment {
     private View view;
     protected Unbinder unbinder;

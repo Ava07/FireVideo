@@ -3,9 +3,6 @@ package com.example.lenovo.firevideo.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/**
- * Created by liuxiaozhong on 2016/5/30.
- */
 public class MD5 {
 
     public static String getMD5(String password ) {

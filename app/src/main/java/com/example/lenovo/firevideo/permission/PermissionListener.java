@@ -2,10 +2,6 @@ package com.example.lenovo.firevideo.permission;
 
 import android.support.annotation.NonNull;
 
-/**
- * Created by dfqin on 2017/1/20.
- */
-
 public interface PermissionListener {
 
     /**

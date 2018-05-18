@@ -10,11 +10,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 
-/**
- * Get screen associated auxiliary class
- *
- * @author Ming <br/>
- */
 public class ScreenUtils {
     private ScreenUtils() {
         /* cannot be instantiated */

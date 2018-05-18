@@ -7,11 +7,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.lenovo.firevideo.R;
 import com.example.lenovo.firevideo.model.MessageBean;
 
-
-/**
- * Created by liuxiaozhong on 2017-09-22.
- */
-
 public class LiveMessageAdapter extends BaseQuickAdapter<MessageBean, BaseViewHolder> {
     public LiveMessageAdapter() {
         super(R.layout.item_live_chat);

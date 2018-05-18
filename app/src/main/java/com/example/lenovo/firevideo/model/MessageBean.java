@@ -1,9 +1,5 @@
 package com.example.lenovo.firevideo.model;
 
-/**
- * Created by liuxiaozhong on 2017-09-22.
- */
-
 public class MessageBean {
     public int type;
     public String name;

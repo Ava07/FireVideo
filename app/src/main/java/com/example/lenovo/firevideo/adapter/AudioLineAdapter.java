@@ -10,10 +10,6 @@ import com.example.lenovo.firevideo.R;
 import com.example.lenovo.firevideo.model.LineBean;
 import com.example.lenovo.firevideo.widgets.MultiCircleDrawable;
 
-/**
- * Created by liuxiaozhong on 2017-09-25.
- */
-
 public class AudioLineAdapter extends BaseQuickAdapter<LineBean,BaseViewHolder> {
     boolean isHost;
     public AudioLineAdapter(boolean isHost) {

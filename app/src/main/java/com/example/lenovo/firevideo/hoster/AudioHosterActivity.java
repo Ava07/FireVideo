@@ -445,11 +445,10 @@ public class AudioHosterActivity extends com.example.lenovo.firevideo.BaseActivi
         }
 
         /**
-         * 游客有申请连线回调
-         *
-         * @param strLivePeerID
-         * @param strCustomID
-         * @param strUserData
+         * 游客有申请连线回调：主播收到游客的连麦请求
+         * @param strLivePeerID  连麦者标识id（用于标识连麦用户，每次连麦随机生成）
+         * @param strCustomID  游客在自己业务平台的Userid
+         * @param strUserData  加入RTC连接的自定义参数体（可查看游客端加入RTC连接方法）
          */
 
         @Override

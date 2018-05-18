@@ -10,11 +10,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.lenovo.firevideo.R;
 import com.example.lenovo.firevideo.model.LineBean;
 
-
-/**
- * Created by liuxiaozhong on 2017/9/24.
- */
-
 public class LiveLineAdapter extends BaseQuickAdapter<LineBean,BaseViewHolder> {
     public LiveLineAdapter() {
         super(R.layout.item_line);

@@ -5,9 +5,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.lenovo.firevideo.R;
 
-/**
- * Created by liuxiaozhong on 2017-09-25.
- */
 
 public class LiveMemberAdapter extends BaseQuickAdapter<String,BaseViewHolder> {
 

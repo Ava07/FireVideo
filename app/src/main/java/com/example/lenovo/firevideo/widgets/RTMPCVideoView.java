@@ -18,9 +18,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-/**
- * Created by Eric on 2016/7/26.
- */
+//参数：
+//RelativeLayout videoView ： 装载视频的布局容器（Android相对布局 RelativeLayout ）
+//Context context： 上下文对象
+//EglBase eglBase：底层视频显示对象
+//说明：该类主要用于连麦窗口管理，例如增加 移除连麦窗口 点击窗口按钮等
 public class RTMPCVideoView implements com.example.lenovo.firevideo.widgets.RTMPCViewHelper {
     private static Context mContext;
     private static int SUB_X = 72;
@@ -35,9 +37,9 @@ public class RTMPCVideoView implements com.example.lenovo.firevideo.widgets.RTMP
     private boolean isHost;
 
     public interface BtnVideoCloseEvent {
-        void CloseVideoRender(View view, String strPeerId);
+        void CloseVideoRender(View view, String strPeerId);//视频连麦挂断
 
-        void OnSwitchCamera(View view);
+        void OnSwitchCamera(View view);//切换前后置摄像头
     }
 
     public enum RTMPCVideoLayout {
@@ -113,7 +115,7 @@ public class RTMPCVideoView implements com.example.lenovo.firevideo.widgets.RTMP
     private VideoView mLocalRender;
     private HashMap<String, VideoView> mRemoteRenders;
     private RTMPCVideoLayout mRTMPCVideoLayout;
-
+    //实例化视频窗口管理对象
     public RTMPCVideoView(Context ctx, RelativeLayout videoView, EglBase eglBase, boolean isHost, RTMPCVideoLayout rtmpcVideoLayout) {
         mContext = ctx;
         mAutoLayout = false;
@@ -519,9 +521,8 @@ public class RTMPCVideoView implements com.example.lenovo.firevideo.widgets.RTMP
         }
     }
 
-    /**
-     * Implements for AnyRTCViewEvents.
-     */
+   //添加本地视频窗口渲染器
+   // 该方法返回一个本地视频渲染对象 VideoRenderer，此时应调用会议对象中的设置本地视频采集窗口方法。
     @Override
     public VideoRenderer OnRtcOpenLocalRender(RendererCommon.ScalingType scalingType) {
         int size = GetVideoRenderSize();
@@ -547,6 +548,7 @@ public class RTMPCVideoView implements com.example.lenovo.firevideo.widgets.RTMP
         return mLocalRender.mRenderer;
     }
 
+    //移除本地视频渲染器
     @Override
     public void OnRtcRemoveLocalRender() {
         if (mLocalRender != null) {
@@ -558,9 +560,10 @@ public class RTMPCVideoView implements com.example.lenovo.firevideo.widgets.RTMP
         }
     }
 
+    //添加其他人视频窗口渲染器 String strPeerId ：RTC服务生成的标识Id 。(用于标识与会者，每次加入会议随机生成)
     @Override
     public VideoRenderer OnRtcOpenRemoteRender(final String strRtcPeerId, RendererCommon.ScalingType scalingType) {
-        VideoView remoteRender = mRemoteRenders.get(strRtcPeerId);
+        VideoView remoteRender = mRemoteRenders.get(strRtcPeerId);// RelativeLayout videoView ：装载视频的布局容器
         if (remoteRender == null) {
             int size = GetVideoRenderSize();
             if (size == 0) {

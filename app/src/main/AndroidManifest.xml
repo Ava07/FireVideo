@@ -54,7 +54,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">   <!--隐藏标题栏 -->
-
+<!--
         <activity android:name="com.example.lenovo.firevideo.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -62,10 +62,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        -->
+        <activity android:name="com.example.lenovo.firevideo.activity.TestFruitActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.LoginActivity"></activity>
         <activity android:name=".activity.MineActivity"></activity>
         <activity android:name=".activity.LoginFastActivity"></activity>
-        <activity android:name=".activity.BaseActivity"></activity>
+        <activity android:name=".activity.LoginBaseActivity"></activity>
         <activity android:name=".activity.FindPasswordActivity"></activity>
         <activity android:name=".activity.MainActivity"></activity>
         <activity android:name=".activity.GroupActivity"></activity>
@@ -85,6 +93,7 @@
             android:name="com.example.lenovo.firevideo.hoster.HosterActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="adjustPan" />
+
         <activity
             android:name="com.example.lenovo.firevideo.guest.GuestActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

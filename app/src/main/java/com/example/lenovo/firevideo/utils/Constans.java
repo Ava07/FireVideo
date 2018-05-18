@@ -1,15 +1,8 @@
 package com.example.lenovo.firevideo.utils;
 
-/**
- * Created by liuxiaozhong on 2017-09-21.
- */
 
 public class Constans {
 
-
-    /**
-     * 请在管理中心获得以下6个数据并替换
-     */
     public final static String DEVELOPERID = "90312945";
 
     public final static String APPID = "anyrtcxCDBa6aj9WMi";
@@ -21,14 +14,6 @@ public class Constans {
     public final static String APP_V_TOKEN = "21b8ca8a2cb06c537279a2fa51a7f8f4";
 
     public final static String APP_PACKAGE = "com.example.lenovo.firevideo";
-
-
-
-
-
-
-
-
 
     public final static  int REQUECT_CODE_CAMARE = 1;
 

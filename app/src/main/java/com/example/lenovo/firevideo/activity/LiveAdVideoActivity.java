@@ -95,7 +95,6 @@ public class LiveAdVideoActivity extends AppCompatActivity {
                 Intent intent = new Intent(LiveAdVideoActivity.this,SplashActivity.class);
                 startActivity(intent);
                 finish();
-
             }
         });
         btn_video.setOnClickListener(new View.OnClickListener() {

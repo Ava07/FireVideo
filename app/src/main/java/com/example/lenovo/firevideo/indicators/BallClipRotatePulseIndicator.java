@@ -9,9 +9,6 @@ import com.example.lenovo.firevideo.indicators.Indicator;
 
 import java.util.ArrayList;
 
-/**
- * Created by Jack on 2015/10/16.
- */
 public class BallClipRotatePulseIndicator extends Indicator {
 
     float scaleFloat1,scaleFloat2,degrees;

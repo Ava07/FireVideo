@@ -11,11 +11,6 @@ import android.view.WindowManager;
 import com.example.lenovo.firevideo.R;
 import com.example.lenovo.firevideo.widgets.BaseDialog;
 
-
-
-/**
- * Created by KathLine on 2016/8/2.
- */
 public class CustomDialog extends BaseDialog {
 
     protected Builder builder;
@@ -239,6 +234,7 @@ public class CustomDialog extends BaseDialog {
 
         public interface onInitListener {
             /**
+             *
              * 绑定控件
              *
              * @param customDialog

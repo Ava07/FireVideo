@@ -3,10 +3,6 @@ package com.example.lenovo.firevideo.utils;
 import com.example.lenovo.firevideo.R;
 import com.example.lenovo.firevideo.app.FireVideoApp;
 
-/**
- * Created by Skyline on 2016/11/1.
- */
-
 public enum  AnyRTCUtils {
     AnyRTC_OK(0),               // 正常
     AnyRTC_UNKNOW(1),           // 未知错误

@@ -13,10 +13,6 @@ import com.example.lenovo.firevideo.hoster.HosterActivity;
 import org.anyrtc.rtmpc_hybrid.RTMPCHosterKit;
 import org.anyrtc.rtmpc_hybrid.RTMPCHybrid;
 
-/**
- * Created by liuxiaozhong on 2017/9/24.
- */
-
 public class MoreFuturesFragment extends Fragment implements View.OnClickListener,HosterActivity.MoreFutureListener{
     private Button more_Jingxiang, more_Camera, more_audio, more_video;
     private RTMPCHosterKit rtmpcHosterKit;

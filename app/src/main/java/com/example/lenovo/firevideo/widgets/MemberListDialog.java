@@ -21,10 +21,6 @@ import org.json.JSONObject;
 
 import butterknife.BindView;
 
-/**
- * Created by liuxiaozhong on 2017-09-25.
- */
-
 public class MemberListDialog extends AppBaseDialogFragment implements SwipeRefreshLayout.OnRefreshListener{
     @BindView(R.id.rv_list)
     RecyclerView rvList;

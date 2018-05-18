@@ -14,10 +14,6 @@ import android.util.Log;
 import java.io.Serializable;
 import java.util.HashMap;
 
-/**
- * Created by dfqin on 2017/1/20.
- */
-
 public class PermissionsUtil {
 
     public static final String TAG = "PermissionGrantor";
@@ -124,7 +120,6 @@ public class PermissionsUtil {
     }
 
     /**
-     *
      * @param key
      * @return
      */

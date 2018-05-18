@@ -8,10 +8,6 @@ import com.example.lenovo.firevideo.indicators.Indicator;
 
 import java.util.ArrayList;
 
-/**
- * Created by Jack Wang on 2016/8/5.
- */
-
 public class MyCustomIndicator extends Indicator{
 
 

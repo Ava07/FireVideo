@@ -2,9 +2,6 @@ package com.example.lenovo.firevideo.utils;
 
 import java.util.Random;
 
-/**
- * Created by Skyline on 2016/8/8.
- */
 public class NameUtils {
     public static String[] userNickname = new String[]{"John", "Michelle", "Amy", "Kim", "Mary", "David", "Sunny", "James", "Maria", "Michael", "Sarah", "Robert", "Lily"
             , "William", "Jessica", "Paul", "Crystal", "Peter", "Jennifer", "George", "Rachel", "Thomas", "Lisa", "Daniel", "Elizabeth"

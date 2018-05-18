@@ -6,10 +6,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-/**
- * Created by KathLine on 2016/11/8.
- */
-
 public abstract class BaseDialog extends Dialog {
 
     public BaseDialog(Context context) {
