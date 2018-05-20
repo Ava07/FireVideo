@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.lenovo.firevideo.adapter.MyPagerAdapter;
 import com.example.lenovo.firevideo.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -54,7 +55,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_mail=(RadioButton)findViewById(R.id.btn_mail);
         btn_mine=(RadioButton)findViewById(R.id.btn_mine);
         btn_add=(RadioButton)findViewById(R.id.btn_add);
-        initViews();
+        try {
+            initViews();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         jump();
     }
 
@@ -93,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private void initViews() {
+    private void initViews() throws IOException {
         vpager_four = (ViewPager) findViewById(R.id.vpager_four);
         tv_one = (TextView) findViewById(R.id.tv_one);
         tv_two = (TextView) findViewById(R.id.tv_two);

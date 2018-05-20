@@ -20,27 +20,27 @@ public class TestFruitActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题栏
         // setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_recyclerview1);
-        initFruits();
+        //initFruits();
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         FruitAdapter1 adapter = new FruitAdapter1(fruitList);
         recyclerView.setAdapter(adapter);
     }
-    public void initFruits(){
-        for (int i=0;i<2;i++){
-            Fruit honey1 = new Fruit("honey1",R.mipmap.bee_01);
-            fruitList.add(honey1);
-            Fruit honey2 = new Fruit("honey2",R.mipmap.bee_02);
-            fruitList.add(honey2);
-            Fruit honey3 = new Fruit("honey3",R.mipmap.bee_03);
-            fruitList.add(honey3);
-            Fruit honey4 = new Fruit("honey4",R.mipmap.bee_04);
-            fruitList.add(honey4);
-            Fruit honey5 = new Fruit("honey5",R.mipmap.bee_05);
-            fruitList.add(honey5);
-        }
-
-    }
+//    public void initFruits(){
+//        for (int i=0;i<2;i++){
+//            Fruit honey1 = new Fruit("honey1",R.mipmap.bee_01);
+//            fruitList.add(honey1);
+//            Fruit honey2 = new Fruit("honey2",R.mipmap.bee_02);
+//            fruitList.add(honey2);
+//            Fruit honey3 = new Fruit("honey3",R.mipmap.bee_03);
+//            fruitList.add(honey3);
+//            Fruit honey4 = new Fruit("honey4",R.mipmap.bee_04);
+//            fruitList.add(honey4);
+//            Fruit honey5 = new Fruit("honey5",R.mipmap.bee_05);
+//            fruitList.add(honey5);
+//        }
+//
+//    }
 
 }

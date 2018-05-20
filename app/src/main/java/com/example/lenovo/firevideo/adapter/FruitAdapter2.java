@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.lenovo.firevideo.R;
 import com.example.lenovo.firevideo.bean.Fruit;
 
@@ -42,7 +43,8 @@ public class FruitAdapter2 extends RecyclerView.Adapter<FruitAdapter1.ViewHolder
     @Override
     public void onBindViewHolder(FruitAdapter1.ViewHolder holder, int position, List<Object> payloads) {
         Fruit fruit = mFruitList.get(position);
-        holder.fruitImage.setImageResource(fruit.getFruit_image());
+       // holder.fruitImage.setImageResource(fruit.getFruit_image());
+        Glide.with(holder.fruitImage.getContext()).load(fruit.getFruitUrl()).into(holder.fruitImage);
         holder.fruitName.setText(fruit.getFruit_name());
     }
 
