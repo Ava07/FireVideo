@@ -65,58 +65,66 @@
         -->
         <activity android:name="com.example.lenovo.firevideo.activity.TestFruitActivity">
             <intent-filter>
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.LoginActivity">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.LoginActivity"></activity>
         <activity android:name=".activity.MineActivity"></activity>
         <activity android:name=".activity.LoginFastActivity"></activity>
         <activity android:name=".activity.LoginBaseActivity"></activity>
         <activity android:name=".activity.FindPasswordActivity"></activity>
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity">
+
+        </activity>
         <activity android:name=".activity.GroupActivity"></activity>
         <activity android:name=".activity.MailActivity"></activity>
         <activity android:name=".activity.EditUserInfActivity"></activity>.0
         <activity android:name=".activity.ShowUserInfoActivity"></activity>
-        <activity android:name="com.example.lenovo.firevideo.activity.LiveAdVideoActivity"></activity>
+        <activity android:name=".activity.LiveAdVideoActivity"></activity>
         <activity android:name=".activity.RegisterActivity"></activity>
         <activity android:name=".activity.VideoRecorderActivity"></activity>
         <activity android:name=".permission.PermissionActivity"></activity>
         <activity
-            android:name="com.example.lenovo.firevideo.LiveActivity"
+            android:name=".LiveActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
-            android:name="com.example.lenovo.firevideo.hoster.HosterActivity"
+            android:name=".hoster.HosterActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name="com.example.lenovo.firevideo.guest.GuestActivity"
+            android:name=".guest.GuestActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.example.lenovo.firevideo.guest.AudioGuestActivity"
+            android:name=".guest.AudioGuestActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.example.lenovo.firevideo.hoster.AudioHosterActivity"
+            android:name=".hoster.AudioHosterActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.example.lenovo.firevideo.hoster.PreStartLiveActivity"
+            android:name=".hoster.PreStartLiveActivity"
             android:label="@string/str_live_info"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.lenovo.firevideo.guest.LiveListActivity"
+            android:name=".guest.LiveListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.lenovo.firevideo.hoster.LiveEndActivity"
+            android:name=".hoster.LiveEndActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="com.example.lenovo.firevideo.SplashActivity"
+        <activity android:name=".SplashActivity"
             android:theme="@style/SplashTheme"
             android:screenOrientation="portrait">
         </activity>

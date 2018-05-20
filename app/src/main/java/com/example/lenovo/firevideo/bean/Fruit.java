@@ -1,9 +1,5 @@
 package com.example.lenovo.firevideo.bean;
 
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.example.lenovo.firevideo.R;
 
 public class Fruit {
     public int fruit_img_id;

@@ -4,12 +4,13 @@ package com.example.lenovo.firevideo.bean;
 import android.graphics.Bitmap;
 import android.widget.Button;
 
+import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobFile;
 
 //视频类
-public class Video extends BmobFile {
+public class Video extends BmobObject {
     private String VideoId;//视频ID
-    private Bitmap VideoFace;//上传视频封面
+    private String VideoFace;//上传视频封面
     private String VideoUrl;//视频的地址
     public  Integer Video_Total_like;//视频总点赞数
     public  Integer Video_Comment_Num;//评论量
@@ -26,8 +27,8 @@ public class Video extends BmobFile {
         this.VideoId=videoId;
     }
 
-    public void setVideoFace(Bitmap bitmap){
-        this.VideoFace=bitmap;
+    public void setVideoFace(String videoFace){
+        this.VideoFace=videoFace;
     }
 
     public   void setVideo_Total_like(Integer video_Total_like) {
@@ -49,7 +50,7 @@ public class Video extends BmobFile {
         return  VideoId;
     }
 
-    public Bitmap getVideoFace(){return VideoFace;}
+    public String getVideoFace(){return VideoFace;}
 
     public   Integer getVideo_Comment_Num() {
         return Video_Comment_Num;

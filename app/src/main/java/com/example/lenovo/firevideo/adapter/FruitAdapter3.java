@@ -12,7 +12,7 @@ import com.example.lenovo.firevideo.bean.Fruit;
 
 import java.util.List;
 
-public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> {
+public class FruitAdapter3 extends RecyclerView.Adapter<FruitAdapter1.ViewHolder> {
     private List<Fruit> mFruitList;
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView fruitImage;
@@ -23,24 +23,24 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
             fruitName = (TextView)view.findViewById(R.id.fruit_name);
         }
     }
-    public FruitAdapter(List<Fruit> fruitList){
+    public FruitAdapter3(List<Fruit> fruitList){
         mFruitList=fruitList;
     }
     @Override
-    public FruitAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FruitAdapter1.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recyclerview_item,parent,false);
-        ViewHolder holder = new ViewHolder(view);
+                .inflate(R.layout.recyclerview_item3,parent,false);
+        FruitAdapter1.ViewHolder holder = new FruitAdapter1.ViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(FruitAdapter1.ViewHolder holder, int position) {
 
     }
 
     @Override
-    public void onBindViewHolder(FruitAdapter.ViewHolder holder, int position, List<Object> payloads) {
+    public void onBindViewHolder(FruitAdapter1.ViewHolder holder, int position, List<Object> payloads) {
         Fruit fruit = mFruitList.get(position);
         holder.fruitImage.setImageResource(fruit.getFruit_image());
         holder.fruitName.setText(fruit.getFruit_name());
