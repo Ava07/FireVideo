@@ -1,19 +1,26 @@
 package com.example.lenovo.firevideo.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.lenovo.firevideo.adapter.MyPagerAdapter;
@@ -41,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int bmpWidth;// 移动条图片的长度
     private int one = 0; //移动条滑动一页的距离
     private int two = 0; //滑动条移动两页的距离
+    public SearchView view_search;
+    public EditText edt_search;
 
     private RadioButton btn_group,btn_home,btn_add,btn_mail,btn_mine;
 
@@ -55,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_mail=(RadioButton)findViewById(R.id.btn_mail);
         btn_mine=(RadioButton)findViewById(R.id.btn_mine);
         btn_add=(RadioButton)findViewById(R.id.btn_add);
+//        view_search = (SearchView)findViewById(R.id.view_search);
+        edt_search = (EditText)findViewById(R.id.edt_search);
         try {
             initViews();
         } catch (IOException e) {
@@ -96,6 +107,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
             }
         });
+        edt_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_SEARCH) {
+                    // 先隐藏键盘
+//                    ((InputMethodManager) edt_search.getContext()
+//                            .getSystemService(Context.INPUT_METHOD_SERVICE))
+//                            .hideSoftInputFromWindow(MainActivity.this
+//                                            .getCurrentFocus().getWindowToken(),
+//                                    InputMethodManager.HIDE_NOT_ALWAYS);
+
+                    ((InputMethodManager)edt_search.getContext().getSystemService(Context.INPUT_METHOD_SERVICE))
+                            .hideSoftInputFromWindow(
+                                    MainActivity.this
+                                            .getCurrentFocus()
+                                            .getWindowToken(),
+                                    InputMethodManager.HIDE_NOT_ALWAYS);
+                    String keyWord =edt_search.getText().toString().trim();
+                    // 搜索，进行自己要的操作...
+                    Intent intent = new Intent(MainActivity.this,SearchUserActivity.class);
+                    intent.putExtra("KeyWord",keyWord);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 
     private void initViews() throws IOException {

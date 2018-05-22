@@ -11,11 +11,26 @@
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="38dp">
-        <android.support.v7.widget.SearchView
+        <!--<android.support.v7.widget.SearchView-->
+            <!--android:id="@+id/view_search"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:queryHint="搜索用户名"-->
+            <!--&gt;-->
+        <!--</android.support.v7.widget.SearchView>-->
+        <EditText
+            android:id="@+id/edt_search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:queryHint="搜索用户名"
-            ></android.support.v7.widget.SearchView>
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="6dip"
+            android:gravity="center_vertical"
+            android:hint="搜索用户名"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:textColor="#8e8787"
+            android:textSize="13sp"
+            />
     </LinearLayout>
     <RelativeLayout
         android:id="@+id/top"

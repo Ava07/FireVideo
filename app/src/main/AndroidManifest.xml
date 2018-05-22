@@ -77,12 +77,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.SearchUserActivity"></activity>
         <activity android:name=".activity.MineActivity"></activity>
         <activity android:name=".activity.LoginFastActivity"></activity>
         <activity android:name=".activity.LoginBaseActivity"></activity>
         <activity android:name=".activity.FindPasswordActivity"></activity>
-        <activity android:name=".activity.MainActivity">
-
+        <activity android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <activity android:name=".activity.GroupActivity"></activity>
         <activity android:name=".activity.MailActivity"></activity>
@@ -128,6 +129,8 @@
             android:theme="@style/SplashTheme"
             android:screenOrientation="portrait">
         </activity>
+
+        <activity android:name=".activity.VideoPlayerActivity"></activity>
 
     </application>
 

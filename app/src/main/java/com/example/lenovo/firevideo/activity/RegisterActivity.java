@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.lenovo.firevideo.R;
 import com.example.lenovo.firevideo.bean.UserInf;
+import com.example.lenovo.firevideo.indicators.AVLoadingIndicatorView;
 import com.example.lenovo.firevideo.utils.PreferenceUtil;
 
 import cn.bmob.v3.Bmob;
@@ -29,7 +30,9 @@ public class RegisterActivity extends AppCompatActivity {
     public Button register_btn_sure;
     public EditText resetpwd_edit_pwd;
     public static final String USER_ID = "user_id";
+    public static final String USER_NAME = "user_name";
     public int SameNameNum = 0;
+    private AVLoadingIndicatorView avi;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,10 @@ public class RegisterActivity extends AppCompatActivity {
         Bmob.initialize(this, "8304511e908e2215a5bc8f02043c04c4");
         initView();
         //init();
+        String indicator=getIntent().getStringExtra("indicator");
+        avi= (AVLoadingIndicatorView) findViewById(R.id.avi);
+        avi.setIndicator(indicator);
+        hideClick(avi);
     }
 
     private void initView() {
@@ -52,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
         register_btn_sure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showClick(avi);
                 setUserinfo();//从界面获取信息并设置用户信息，保存在后台
             }
         });
@@ -67,15 +75,12 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void setUserinfo() {
         String set_pwd = setpwd_edit_pwd.getText().toString();
-        String set_userName = setpwd_edit_name.getText().toString();
+        final String set_userName = setpwd_edit_name.getText().toString();
         String reset_pwd = resetpwd_edit_pwd.getText().toString();
         if (TextUtils.isEmpty(set_pwd) || TextUtils.isEmpty(reset_pwd)) {
             Toast.makeText(RegisterActivity.this, "密码输入不能为空", Toast.LENGTH_SHORT).show();
         }
         if (set_pwd.equals(reset_pwd)) {
-            // BmobUser bmobUser = new BmobUser();
-            // bmobUser.setUsername(set_userName);
-            // bmobUser.setPassword(reset_pwd);
             final UserInf userInf = new UserInf();
             userInf.setUsername(set_userName);
             userInf.setUserKey(reset_pwd);
@@ -85,13 +90,15 @@ public class RegisterActivity extends AppCompatActivity {
                 public void done(String s, BmobException e) {
                     if (e == null) {
                        // Log.d("用户ID", s);
+                        hideClick(avi);
                         userInf.setUserId(s);
-                        PreferenceUtil.put(USER_ID, s);//USER_ID就是用户ID
+//                        PreferenceUtil.put(USER_ID, s);//USER_ID就是用户ID
+//                        PreferenceUtil.put(USER_NAME,set_userName);
                         Log.d("用户ID", s);
                         Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
+//                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+//                        startActivity(intent);
+//                        finish();
                     } else {
                         Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
                         Toast.makeText(RegisterActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
@@ -102,93 +109,17 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(RegisterActivity.this, "两次输入密码不一样", Toast.LENGTH_SHORT).show();
         }
     }
+    public void hideClick(View view) {
+        avi.hide();
+        // or avi.smoothToHide();
+    }
+
+    public void showClick(View view) {
+        avi.show();
+        // or avi.smoothToShow();
+    }
 }
-/*
-    public void setUserinfo() {
-        String set_pwd = setpwd_edit_pwd.getText().toString();
-        String set_userName = setpwd_edit_name.getText().toString();
-        String reset_pwd = resetpwd_edit_pwd.getText().toString();
-        if (TextUtils.isEmpty(set_pwd) || TextUtils.isEmpty(reset_pwd)) {
-            Toast.makeText(RegisterActivity.this, "密码输入不能为空", Toast.LENGTH_SHORT).show();
-        }
-        if (set_pwd.equals(reset_pwd)) {
-            // BmobUser bmobUser = new BmobUser();
-            // bmobUser.setUsername(set_userName);
-            // bmobUser.setPassword(reset_pwd);
-            UserInf userInf = new UserInf();
-            userInf.setUsername(set_userName);
-            userInf.setUserKey(reset_pwd);
-            //需要有一个查找是否有用户名重名的情况，没有重名的情况下，才可以将用户信息存储到服务器
-            BmobQuery<UserInf> query = new BmobQuery<UserInf>();
-            query.addWhereEqualTo("Username", set_userName);
-            query.count(UserInf.class, new CountListener() {
-                @Override
-                public void done(Integer integer, BmobException e) {
-                    if (e == null) {
-                        SameNameNum = integer;
-                        //当e为空时，不能使用e.getMessage()这种方法
-                        // Log.i("Bmob", "成功:" + e.getMessage() + "," + e.getErrorCode());
-                    } else {
-                        // SameNameNum = integer;
-                        Log.i("Bmob", "失败:" + e.getMessage() + "," + e.getErrorCode());
-                        //Toast.makeText(RegisterActivity.this, "查找失败了", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
 
-            if (SameNameNum == 0) {
-                userInf.save(new SaveListener<String>() {
-                    @Override
-                    public void done(String s, BmobException e) {
-                        if (e == null) {
-                            //Log.d("用户ID", s);
-                            PreferenceUtil.put(USER_ID, s);
-                            Log.d("用户ID", s);
-                            Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }else {
-                            Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
-                            Toast.makeText(RegisterActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }else {
-                Toast.makeText(RegisterActivity.this, "当前账户已经注册了", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(RegisterActivity.this, "两次密码输入不一样", Toast.LENGTH_SHORT).show();
-        }
-    }*/
-
-            /*
-            userInf.signUp(new SaveListener<Object>() {
-                @Override
-                public void done(Object o, BmobException e) {
-                    Log.d("第一个",o.toString());
-                    Log.d("第二个",e.toString());
-                    if(o!=null){
-                        //在这里就显示已经注册成功了，看你是跳到登录页面还是直接到主页
-                        Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
-                          Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
-                          startActivity(intent);
-                          finish();
-                    }else {
-                        if(e.getErrorCode()==202){
-                            Toast.makeText(RegisterActivity.this,"当前账户已经注册了",Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(RegisterActivity.this,"注册失败",Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-                }
-            });
-
-        }else {
-            Toast.makeText(RegisterActivity.this,"两次密码输入不一样",Toast.LENGTH_SHORT).show();
-        }
-        */
 
 
 

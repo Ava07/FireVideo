@@ -155,4 +155,9 @@
     <color name="aliceblue">#F0F8FF</color>
     <color name="default_cursor_color">#8db4eb</color>
     <color name="antiquewhite">#FAEBD7</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="btn_rect_alpha">#56b3b3b3</color>
+
+    <color name="bottom_container_bg">#99000000</color><!--主题色-->
 </resources>

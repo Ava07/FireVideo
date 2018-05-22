@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_live"
         android:id="@+id/btn_video"
-        android:text="开启视频"/>
+        android:text="上传视频"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

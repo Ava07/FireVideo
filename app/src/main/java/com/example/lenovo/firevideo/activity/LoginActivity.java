@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText login_edit_pwd;
     public static final String USER_PASSWORD = "user_password";
     public static final String USER_NAME = "user_name";
+    public static final String USER_ID = "user_id";
     private CheckBox Login_Remember;
     private AVLoadingIndicatorView avi;
     public void onCreate(Bundle savedInstanceState) {
@@ -113,29 +114,6 @@ public class LoginActivity extends AppCompatActivity {
         userInfoBean.setUsername(username);
         //userInfoBean.setPassword(password);
         userInfoBean.setUserKey(password);
-        /*
-        userInfoBean.login(new SaveListener<Object>() {
-            @Override
-            public void done(Object o, BmobException e) {
-                if(o!=null){
-                    Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
-                    //跳转到主页   保存账号密码到SharedPreferences
-                    if(Login_Remember.isChecked()){
-                        PreferenceUtil.put(USER_NAME,username);
-                        PreferenceUtil.put(USER_PASSWORD,password);
-                    }
-                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }else {
-                    if(e.getErrorCode()==101){
-                        Toast.makeText(LoginActivity.this,"账号密码错误",Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        });  */
         //2018.5.1.在登陆界面，登陆失败
         cn.bmob.v3.BmobQuery<UserInf> query = new cn.bmob.v3.BmobQuery<UserInf>();
         query.addWhereEqualTo("Username",userInfoBean.getUsername());
@@ -147,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                         //获得playerName的信息
                         if (password.equals(userInf.getUserKey())){
                             hideClick(avi);
+                            PreferenceUtil.put(USER_ID, userInf.getObjectId());//USER_ID就是用户ID
                             Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
                             //跳转到主页   保存账号密码到SharedPreferences
                             if(Login_Remember.isChecked()){

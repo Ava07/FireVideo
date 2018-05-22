@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.lenovo.firevideo.R;
 import com.example.lenovo.firevideo.adapter.FruitAdapter1;
+import com.example.lenovo.firevideo.adapter.FruitAdapter3;
 import com.example.lenovo.firevideo.bean.Fruit;
 import com.example.lenovo.firevideo.bean.UserInf;
 import com.example.lenovo.firevideo.bean.Video;
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
@@ -34,9 +36,11 @@ public class ViewThree {
     private TextView fruit_name;
     private String VideoUserId;//上传视频的用户ID
     private String VideoUsername;//上传视频的用户名
+    private String VideoUrl;//上传视频的路径
+    private String VideoId;//视频ID
     public ViewThree(MainActivity activity) throws IOException {
         this.activity = activity;
-        view=activity.getLayoutInflater().inflate(R.layout.activity_recyclerview1, null, false);
+        view=activity.getLayoutInflater().inflate(R.layout.activity_recyclerview3, null, false);
         init();
     }
 
@@ -52,6 +56,7 @@ public class ViewThree {
         // TextView textView=(TextView) view.findViewById(R.id.txt);//根据获取到的View，实现对控件的获取。
         fruit_image = (ImageView)view.findViewById(R.id.fruit_image);
         fruit_name = (TextView)view.findViewById(R.id.fruit_name);
+       // Bmob.initialize(view.getContext(), "8304511e908e2215a5bc8f02043c04c4");
 
         //initFruits();
         searchVideoList();
@@ -59,14 +64,19 @@ public class ViewThree {
         //LinearLayoutManager layoutManager = new LinearLayoutManager(activity);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(activity,2);
         recyclerView.setLayoutManager(gridLayoutManager);
-        FruitAdapter1 adapter = new FruitAdapter1(fruitList);
+        FruitAdapter3 adapter = new FruitAdapter3(fruitList);
         recyclerView.setAdapter(adapter);
     }
-    public void initFruits(String Username,String VideoFacePath) {
-        Fruit honey1 = new Fruit(Username,VideoFacePath);
+    public void initFruits(String VideoId,String Username,String VideoFacePath,String VideoUrl) {
+        Fruit honey1 = new Fruit(VideoId,Username,VideoFacePath,VideoUrl);
         fruitList.add(honey1);
 
     }
+//    public void initFruits(String Username,String VideoFacePath,String VideoUrl) {
+//        Fruit honey1 = new Fruit(Username,VideoFacePath,VideoUrl);
+//        fruitList.add(honey1);
+//
+//    }
 
     //    //查询视频里面所有的缩略图路径
     public void searchVideoList(){
@@ -84,6 +94,9 @@ public class ViewThree {
                     for (Video video : object) {
                         //获得playerName的信息
                         VideoFacePath = video.getVideoFace();
+                        VideoUrl = video.getVideoUrl();
+                        VideoId = video.getVideoId();
+                        initFruits(VideoId,VideoUsername,VideoFacePath,VideoUrl);
                         Log.i("查询Video成功",video.getObjectId());
 
                         BmobQuery<VideoUser> query1 = new BmobQuery<VideoUser>();
@@ -108,7 +121,7 @@ public class ViewThree {
                                                     }
                                                 }
                                                 else {
-                                                    Log.i("bmob","查询UserInf失败："+e.getMessage()+","+e.getErrorCode());
+                                                    Log.i("bmob","viewthree查询UserInf失败："+e.getMessage()+","+e.getErrorCode());
                                                 }
 
                                             }
@@ -117,17 +130,16 @@ public class ViewThree {
                                     }
                                 }
                                 else {
-                                    Log.i("bmob","查询VideoUser失败："+e.getMessage()+","+e.getErrorCode());
+                                    Log.i("bmob","viewthree查询VideoUser失败："+e.getMessage()+","+e.getErrorCode());
                                 }
                             }
                         });
 
-
-                        initFruits(VideoUsername,VideoFacePath);
+//                        initFruits(VideoUsername,VideoFacePath,VideoUrl);
                         // Glide.with(view.getContext()).load(VideoFacePath).into(fruit_image);
                     }
                 }else{
-                    Log.i("bmob","查询Video失败："+e.getMessage()+","+e.getErrorCode());
+                    Log.i("bmob","viewthree查询Video失败："+e.getMessage()+","+e.getErrorCode());
                 }
             }
         });

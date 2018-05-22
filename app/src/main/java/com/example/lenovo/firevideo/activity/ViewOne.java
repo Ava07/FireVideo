@@ -25,9 +25,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.QueryListener;
 
 //为主界面的每一个item，生成相应的类，并每个页面分开，做相应的点击处理
 public class ViewOne {
@@ -40,6 +42,8 @@ public class ViewOne {
     private TextView fruit_name;
     private String VideoUserId;//上传视频的用户ID
     private String VideoUsername;//上传视频的用户名
+    private String VideoUrl;//上传视频的路径
+    private String VideoId;//视频ID
     public ViewOne(MainActivity activity) throws IOException {
         this.activity = activity;
         view=activity.getLayoutInflater().inflate(R.layout.activity_recyclerview1, null, false);
@@ -58,6 +62,7 @@ public class ViewOne {
        // TextView textView=(TextView) view.findViewById(R.id.txt);//根据获取到的View，实现对控件的获取。
         fruit_image = (ImageView)view.findViewById(R.id.fruit_image);
         fruit_name = (TextView)view.findViewById(R.id.fruit_name);
+        //Bmob.initialize(view.getContext(), "8304511e908e2215a5bc8f02043c04c4");
 
         //initFruits();
         searchVideoList();
@@ -68,11 +73,16 @@ public class ViewOne {
         FruitAdapter1 adapter = new FruitAdapter1(fruitList);
         recyclerView.setAdapter(adapter);
     }
-    public void initFruits(String Username,String VideoFacePath) {
-            Fruit honey1 = new Fruit(Username,VideoFacePath);
+    public void initFruits(String VideoId,String Username,String VideoFacePath,String VideoUrl) {
+            Fruit honey1 = new Fruit(VideoId,Username,VideoFacePath,VideoUrl);
             fruitList.add(honey1);
 
     }
+//    public void initFruits(String Username,String VideoFacePath,String VideoUrl) {
+//        Fruit honey1 = new Fruit(Username,VideoFacePath,VideoUrl);
+//        fruitList.add(honey1);
+//
+//    }
 
 //    //查询视频里面所有的缩略图路径
     public void searchVideoList(){
@@ -90,35 +100,42 @@ public class ViewOne {
                     for (Video video : object) {
                         //获得playerName的信息
                         VideoFacePath = video.getVideoFace();
+                        VideoUrl = video.getVideoUrl();
+                        VideoId = video.getVideoId();
                         Log.i("查询Video成功",video.getObjectId());
+//                        initFruits(VideoUsername,VideoFacePath,VideoUrl);
+                        initFruits(VideoId,VideoUsername,VideoFacePath,VideoUrl);
 
                         BmobQuery<VideoUser> query1 = new BmobQuery<VideoUser>();
                         query1.addWhereEqualTo("VideoId",video.getObjectId());
+                        //query1.setLimit(1);
                         query1.findObjects(new FindListener<VideoUser>() {
                             @Override
                             public void done(List<VideoUser> list, BmobException e) {
                                 if (e==null){
                                     for (VideoUser videoUser : list){
-                                         VideoUserId = videoUser.getUserId();
+                                        VideoUserId = videoUser.getUserId();
                                         Log.i("查询VideoUseer成功",videoUser.getObjectId());
 
-                                         BmobQuery<UserInf> userInfBmobQuery = new BmobQuery<UserInf>();
-                                         userInfBmobQuery.addWhereEqualTo("UserId",VideoUserId);
-                                         userInfBmobQuery.findObjects(new FindListener<UserInf>() {
-                                             @Override
-                                             public void done(List<UserInf> list, BmobException e) {
-                                                 if (e==null){
-                                                     for (UserInf userInf : list){
+                                        BmobQuery<UserInf> userInfBmobQuery = new BmobQuery<UserInf>();
+                                        userInfBmobQuery.addWhereEqualTo("UserId",VideoUserId);
+                                        //userInfBmobQuery.setLimit(1);
+                                        userInfBmobQuery.findObjects(new FindListener<UserInf>() {
+                                            @Override
+                                            public void done(List<UserInf> list, BmobException e) {
+                                                if (e==null){
+                                                    for (UserInf userInf : list){
                                                         VideoUsername= userInf.getUsername();
                                                         Log.i("查询UserInf成功",userInf.getObjectId());
-                                                     }
-                                                 }
-                                                 else {
-                                                     Log.i("bmob","查询UserInf失败："+e.getMessage()+","+e.getErrorCode());
-                                                 }
+                                                    }
+//                                                    initFruits(VideoUsername,VideoFacePath,VideoUrl);
+                                                }
+                                                else {
+                                                    Log.i("bmob","查询UserInf失败："+e.getMessage()+","+e.getErrorCode());
+                                                }
 
-                                             }
-                                         });
+                                            }
+                                        });
 
                                     }
                                 }
@@ -127,9 +144,8 @@ public class ViewOne {
                                 }
                             }
                         });
-
-
-                        initFruits(VideoUsername,VideoFacePath);
+//                        initFruits(VideoId,VideoUsername,VideoFacePath,VideoUrl);
+//                        initFruits(VideoUsername,VideoFacePath,VideoUrl);
                        // Glide.with(view.getContext()).load(VideoFacePath).into(fruit_image);
                     }
                 }else{
@@ -138,4 +154,11 @@ public class ViewOne {
             }
         });
     }
+
+    //点击缩略图之后的跳转
+    public void playVideo(){
+
+
+    }
+
 }

@@ -51,13 +51,21 @@
         android:layout_below="@+id/first_line"
         android:layout_weight="1">
 
-        <com.example.lenovo.firevideo.view.RoundImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+        <!--<com.example.lenovo.firevideo.view.RoundImageView-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:id="@+id/head"-->
+            <!--android:layout_centerInParent="false"-->
+            <!--android:scaleType="fitCenter"-->
+            <!--android:src="@mipmap/img" />-->
+        <ImageView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
             android:id="@+id/head"
+            android:src="@mipmap/imgdefault"
             android:layout_centerInParent="false"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/img" />
+            />
+
     </RelativeLayout>
 
         <!--设置粉丝、关注、能量-->
