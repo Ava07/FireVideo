@@ -3,20 +3,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="48dp"
-        android:background="#FFFFFF">
+    <!--<LinearLayout-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="48dp"-->
+        <!--android:background="#FFFFFF">-->
+        <!--<TextView-->
+            <!--android:id="@+id/tv_three"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:layout_weight="1.0"-->
+            <!--android:gravity="center"-->
+            <!--android:textSize="20dp"-->
+            <!--android:text="搜索情况如下"-->
+            <!--android:textColor="#000000"/>-->
+    <!--</LinearLayout>-->
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_top_bar"
+        android:background="@color/common_top_bar_blue" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:onClick="back"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/top_bar_back" />
+
+        <View
+            android:id="@+id/view_temp"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/iv_back"
+            android:background="#14191A" />
+
         <TextView
-            android:id="@+id/tv_three"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1.0"
-            android:gravity="center"
-            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/view_temp"
             android:text="搜索情况如下"
-            android:textColor="#000000"/>
-    </LinearLayout>
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+    </RelativeLayout>
     <LinearLayout
         android:layout_below="@+id/scan_info"
         android:layout_width="match_parent"
@@ -33,8 +72,8 @@
         android:orientation="horizontal">
         <ImageView
             android:id="@+id/head"
-            android:layout_width="@dimen/dp_40"
-            android:layout_height="@dimen/dp_40"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_gravity="center_vertical"
             android:src="@mipmap/imgdefault"/>
@@ -62,6 +101,17 @@
                 android:background="@color/fail"/>
         </RelativeLayout>
 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="100dp">
+        <com.example.lenovo.firevideo.indicators.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AVLoadingIndicatorView.Large"
+            />
     </LinearLayout>
 
 

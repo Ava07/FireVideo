@@ -24,7 +24,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.lenovo.firevideo.R;
+import com.example.lenovo.firevideo.bean.FollowUser;
+import com.example.lenovo.firevideo.bean.LikeVideoUser;
 import com.example.lenovo.firevideo.bean.UserInf;
+import com.example.lenovo.firevideo.bean.VideoUser;
 import com.example.lenovo.firevideo.permission.PermissionListener;
 import com.example.lenovo.firevideo.permission.PermissionsUtil;
 import com.example.lenovo.firevideo.utils.PreferenceUtil;
@@ -34,9 +37,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.CountListener;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
@@ -52,8 +59,21 @@ public class MineActivity extends AppCompatActivity {
     public static final String USER_ID = "user_id";
     public static final String HEAD_URL = "head_url";
     public static final String USER_NAME = "user_name";
+    public static final String FOLLOW_NUM = "follow_num";
+    public static final String FOLLOWER_NUM = "follower_num";
+    public static final String ENERGY_VALUE = "energy_value";
     public String Username;//用户名
     public TextView user_name;
+    public String FollowNumber;
+    public String FollowerNumber;
+    public String EnergyTheValue;
+    public TextView follow_num;
+    public TextView energy_value;
+    public TextView fens_num;
+    public Integer followNum = 0;
+    public Integer followerNum = 0;
+    public Integer energyValue = 0;
+    public String VideoId;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,14 +89,31 @@ public class MineActivity extends AppCompatActivity {
         btn_add=(RadioButton)findViewById(R.id.btn_add);
         head = (ImageView)findViewById(R.id.head);
         user_name = (TextView)findViewById(R.id.user_name);
+        follow_num = (TextView)findViewById(R.id.follow_num);
+        energy_value = (TextView)findViewById(R.id.energy_value);
+        fens_num = (TextView)findViewById(R.id.fens_num);
         Username = PreferenceUtil.getString(USER_NAME,"");
         headUrl = PreferenceUtil.getString(HEAD_URL,"");
+        UserId = PreferenceUtil.getString(USER_ID, "");//USER_ID就是用户ID
+//        btn_mine.setBackgroundResource(R.mipmap.mine_fill);
         init();
+        setFollowInf();
         jump();
 
     }
+    public void setFollowInf(){
+        followNum = PreferenceUtil.getInt(FOLLOW_NUM,followNum);
+        followerNum = PreferenceUtil.getInt(FOLLOWER_NUM,followerNum);
+        energyValue = PreferenceUtil.getInt(ENERGY_VALUE,energyValue);
+        FollowNumber = followNum.toString();
+        FollowerNumber = followerNum.toString();
+        EnergyTheValue = energyValue.toString();
+        follow_num.setText(FollowNumber);
+        fens_num.setText(FollowerNumber);
+        energy_value.setText(EnergyTheValue);
+    }
 
-    private void init() {
+    public void init() {
         Log.i("用户名",Username);
         if (Username != null){
             user_name.setText(Username);
@@ -84,6 +121,119 @@ public class MineActivity extends AppCompatActivity {
         if (headUrl != null){
             Glide.with(head.getContext()).load(headUrl).into(head);//让用户头像显示
         }
+        if (followNum != 0){
+            Log.i("followNum",followNum.toString());
+//            follow_num.setText(followNum);
+        }
+        UserId = PreferenceUtil.getString(USER_ID, "");//USER_ID就是用户ID
+        Log.i("佐罗的ID",UserId);
+        BmobQuery<FollowUser> query = new BmobQuery<FollowUser>();
+        query.addWhereEqualTo("FollowId",UserId);
+        query.count(FollowUser.class, new CountListener() {
+            @Override
+            public void done(Integer integer, BmobException e) {
+                if (e==null){
+                    followNum = integer;
+                    Log.i("得到关注用户数量成功",followNum.toString());
+                    UserInf userInf = new UserInf();
+                    userInf.setFollow_Num(followNum);
+                    UserId = PreferenceUtil.getString(USER_ID, "");//USER_ID就是用户ID
+                    userInf.update(UserId, new UpdateListener() {
+                        @Override
+                        public void done(BmobException e) {
+                            if (e==null){
+                                Log.i("更新用户关注和粉丝量到UserInf表成功","");
+                                PreferenceUtil.put(FOLLOW_NUM,followNum);
+                            }
+                            else {
+                                Log.i("更新用户关注和粉丝量到UserInf表失败",e.getMessage()+"," + e.getErrorCode());
+
+                            }
+                        }
+                    });
+                }
+                else {
+                    Log.i("得到关注用户数量失败",e.getMessage()+"," + e.getErrorCode());
+
+                }
+
+            }
+        });
+        BmobQuery<FollowUser> query1 = new BmobQuery<FollowUser>();
+        query1.addWhereEqualTo("FollowedId",UserId);
+        query1.count(FollowUser.class, new CountListener() {
+            @Override
+            public void done(Integer integer, BmobException e) {
+                if (e==null){
+                    followerNum = integer;
+                    Log.i("得到粉丝用户数量成功",followerNum.toString());
+                    UserInf userInf = new UserInf();
+                    userInf.setFollower_Num(followerNum);
+                    UserId = PreferenceUtil.getString(USER_ID, "");//USER_ID就是用户ID
+                    userInf.update(UserId, new UpdateListener() {
+                        @Override
+                        public void done(BmobException e) {
+                            if (e==null){
+                                Log.i("更新用户关注和粉丝量到UserInf表成功","");
+                                PreferenceUtil.put(FOLLOWER_NUM,followerNum);
+                            }
+                            else {
+                                Log.i("更新用户关注和粉丝量到UserInf表失败",e.getMessage()+"," + e.getErrorCode());
+
+                            }
+                        }
+                    });
+                }
+                else {
+                    Log.i("得到粉丝用户数量失败",e.getMessage()+"," + e.getErrorCode());
+
+                }
+            }
+        });
+
+        BmobQuery<VideoUser> query2 = new BmobQuery<VideoUser>();
+        query2.addWhereEqualTo("UserId",UserId);
+        query2.findObjects(new FindListener<VideoUser>() {
+            @Override
+            public void done(List<VideoUser> list, BmobException e) {
+                if (e == null) {
+                    for (VideoUser videoUser : list) {
+                        VideoId = videoUser.getVideoId();
+                        BmobQuery<LikeVideoUser> query3 = new BmobQuery<LikeVideoUser>();
+                        query3.addWhereEqualTo("VideoId",VideoId);
+                        query3.count(LikeVideoUser.class, new CountListener() {
+                            @Override
+                            public void done(Integer integer, BmobException e) {
+                                if (e==null){
+                                    //1个点赞可得到1个能量值
+                                    energyValue = integer;
+                                    UserInf userInf = new UserInf();
+                                    userInf.setTotal_Energy_Value(energyValue);
+                                    userInf.update(UserId, new UpdateListener() {
+                                        @Override
+                                        public void done(BmobException e) {
+                                            if (e==null){
+                                                Log.i("更新用户能量值至UserInf表成功",energyValue.toString());
+                                                PreferenceUtil.put(ENERGY_VALUE,energyValue);
+                                            }
+                                            else {
+                                                Log.i("更新用户能量值至UserInf表失败",e.getMessage()+"," + e.getErrorCode());
+
+                                            }
+                                        }
+                                    });
+                                }
+                                else {
+                                    Log.i("在LikeVideoUser中统计点赞量失败",e.getMessage()+"," + e.getErrorCode());
+
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+        });
+
     }
 
     @Override
@@ -95,6 +245,26 @@ public class MineActivity extends AppCompatActivity {
         if (headUrl != null){
             Glide.with(head.getContext()).load(headUrl).into(head);//让用户头像显示
         }
+        if (followNum != 0){
+            Log.i("followNum",followNum.toString());
+//            follow_num.setText(followNum);
+        }
+//        BmobQuery<UserInf> query2 = new BmobQuery<UserInf>();
+//        query2.addWhereEqualTo("UserId",UserId);
+//        query2.findObjects(new FindListener<UserInf>() {
+//            @Override
+//            public void done(List<UserInf> list, BmobException e) {
+//                if (e==null){
+//                    for (UserInf userInf : list){
+//                        followNum = userInf.getFollow_Num();
+//                        followerNum = userInf.getFollower_Num();
+//                        follow_num.setText(followNum);
+//                        fens_num.setText(followerNum);
+//                    }
+//                }
+//            }
+//        });
+
     }
 
 

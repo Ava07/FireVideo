@@ -24,6 +24,7 @@ import com.example.lenovo.firevideo.SplashActivity;
 import com.example.lenovo.firevideo.bean.UserInf;
 import com.example.lenovo.firevideo.bean.Video;
 import com.example.lenovo.firevideo.bean.VideoUser;
+import com.example.lenovo.firevideo.indicators.AVLoadingIndicatorView;
 import com.example.lenovo.firevideo.permission.PermissionListener;
 import com.example.lenovo.firevideo.permission.PermissionsUtil;
 import com.example.lenovo.firevideo.utils.PreferenceUtil;
@@ -62,6 +63,7 @@ public class LiveAdVideoActivity extends AppCompatActivity {
     public String VideoFace;//视频缩略图路径
     public Boolean UploadVideoFlag=false;//判断视频是否成功上传
     public Boolean UploadVideoFaceFlag=false;//判断缩略图是否成功上传
+    private AVLoadingIndicatorView avi;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,10 @@ public class LiveAdVideoActivity extends AppCompatActivity {
         btn_live=(Button)findViewById(R.id.btn_live);
         btn_video=(Button)findViewById(R.id.btn_video);
         btn_back=(Button)findViewById(R.id.btn_back);
+        String indicator=getIntent().getStringExtra("indicator");
+        avi= (AVLoadingIndicatorView) findViewById(R.id.avi);
+        avi.setIndicator(indicator);
+        hideClick(avi);
         jump();
     }
     protected void requestPermission() {
@@ -149,6 +155,9 @@ public class LiveAdVideoActivity extends AppCompatActivity {
             int actual_image_column_index = actualimagecursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             actualimagecursor.moveToFirst();
             String img_path = actualimagecursor.getString(actual_image_column_index);
+            if (img_path != null){
+                showClick(avi);
+            }
             File video_file = new File(img_path);
             bmobFile = new BmobFile(video_file);
             bitmap=getVideoThumbnail(img_path);
@@ -259,6 +268,7 @@ public class LiveAdVideoActivity extends AppCompatActivity {
                                     @Override
                                     public void done(BmobException e) {
                                         if (e==null){
+                                            hideClick(avi);
                                             Log.i("bmob","更新VideoUser类信息成功");
                                             Toast.makeText(LiveAdVideoActivity.this, "更新VideoUser类信息成功", Toast.LENGTH_SHORT).show();
                                         }
@@ -337,6 +347,15 @@ public class LiveAdVideoActivity extends AppCompatActivity {
     }
 
 
+    public void hideClick(View view) {
+        avi.hide();
+        // or avi.smoothToHide();
+    }
+
+    public void showClick(View view) {
+        avi.show();
+        // or avi.smoothToShow();
+    }
     public Bitmap getVideoThumbnail(String filePath) {
         Bitmap b=null;
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();

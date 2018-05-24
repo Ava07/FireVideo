@@ -26,6 +26,10 @@ public class UserInf extends BmobObject {
     public UserInf(){
 
     }
+    public UserInf(String Username,String UserHead){
+        this.Username = Username;
+        this.UserHead = UserHead;
+    }
 
     public void setBirthday(String birthday) {
         Birthday = birthday;

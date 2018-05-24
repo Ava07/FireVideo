@@ -71,6 +71,8 @@ public class VideoPlayerActivity extends AppCompatActivity {
                    public void done(String s, BmobException e) {
                        if (e==null){
                            UpdateFlag = true;
+                           Toast.makeText(VideoPlayerActivity.this,"点赞成功",Toast.LENGTH_SHORT).show();
+
                            Log.i("更新至LikeVideoUser表成功",UpdateFlag.toString());
                        }
                        else {

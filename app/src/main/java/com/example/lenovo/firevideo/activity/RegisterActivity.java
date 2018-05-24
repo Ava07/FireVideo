@@ -22,6 +22,8 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.CountListener;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
+
 //注册界面
 public class RegisterActivity extends AppCompatActivity {
     public EditText setpwd_edit_name;
@@ -92,6 +94,18 @@ public class RegisterActivity extends AppCompatActivity {
                        // Log.d("用户ID", s);
                         hideClick(avi);
                         userInf.setUserId(s);
+                        userInf.update(s, new UpdateListener() {
+                            @Override
+                            public void done(BmobException e) {
+                                if (e==null){
+                                    Log.i("更新用户信息成功",userInf.getUserId());
+                                }
+                                else {
+                                    Log.i("更新用户信息失败",userInf.getUserId());
+
+                                }
+                            }
+                        });
 //                        PreferenceUtil.put(USER_ID, s);//USER_ID就是用户ID
 //                        PreferenceUtil.put(USER_NAME,set_userName);
                         Log.d("用户ID", s);

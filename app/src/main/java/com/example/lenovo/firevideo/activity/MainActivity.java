@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_add=(RadioButton)findViewById(R.id.btn_add);
 //        view_search = (SearchView)findViewById(R.id.view_search);
         edt_search = (EditText)findViewById(R.id.edt_search);
+//        btn_home.setBackgroundResource(R.mipmap.homepage_fill);
         try {
             initViews();
         } catch (IOException e) {
