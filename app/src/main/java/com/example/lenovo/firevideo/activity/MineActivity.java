@@ -12,6 +12,8 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -24,9 +26,14 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.lenovo.firevideo.R;
+import com.example.lenovo.firevideo.adapter.FruitAdapter1;
+import com.example.lenovo.firevideo.adapter.GroupAdapter;
+import com.example.lenovo.firevideo.adapter.MineAdapter;
 import com.example.lenovo.firevideo.bean.FollowUser;
+import com.example.lenovo.firevideo.bean.Fruit;
 import com.example.lenovo.firevideo.bean.LikeVideoUser;
 import com.example.lenovo.firevideo.bean.UserInf;
+import com.example.lenovo.firevideo.bean.Video;
 import com.example.lenovo.firevideo.bean.VideoUser;
 import com.example.lenovo.firevideo.permission.PermissionListener;
 import com.example.lenovo.firevideo.permission.PermissionsUtil;
@@ -37,6 +44,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -46,6 +54,11 @@ import cn.bmob.v3.listener.CountListener;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
+import rx.Observer;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 //个人中心界面
 public class MineActivity extends AppCompatActivity {
@@ -62,7 +75,9 @@ public class MineActivity extends AppCompatActivity {
     public static final String FOLLOW_NUM = "follow_num";
     public static final String FOLLOWER_NUM = "follower_num";
     public static final String ENERGY_VALUE = "energy_value";
+    public static final String USER_CITY = "user_city";
     public String Username;//用户名
+    public String UserCity;//用户所处城市
     public TextView user_name;
     public String FollowNumber;
     public String FollowerNumber;
@@ -74,6 +89,8 @@ public class MineActivity extends AppCompatActivity {
     public Integer followerNum = 0;
     public Integer energyValue = 0;
     public String VideoId;
+    private Subscription subscription;
+    private List<Video> videoArrayList = new ArrayList<>();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +115,7 @@ public class MineActivity extends AppCompatActivity {
 //        btn_mine.setBackgroundResource(R.mipmap.mine_fill);
         init();
         setFollowInf();
+//        initUserVideo();
         jump();
 
     }
@@ -235,7 +253,135 @@ public class MineActivity extends AppCompatActivity {
         });
 
     }
+    public void initVideoInf(String VideoId,String VideoFacePath, String VideoUrl){
+        Video video = new Video(VideoId,VideoFacePath,VideoUrl);
+        videoArrayList.add(video);
+    }
 
+    public void initUserVideo(){
+//        subscription = rx.Observable.create(new rx.Observable.OnSubscribe<Video>() {
+//            @Override
+//            public void call(final Subscriber<? super Video> subscriber) {
+                BmobQuery<VideoUser> query2 = new BmobQuery<VideoUser>();
+                query2.addWhereEqualTo("UserId",UserId);
+                Log.i("用户ID",UserId);
+                query2.findObjects(new FindListener<VideoUser>() {
+                    @Override
+                    public void done(List<VideoUser> list, BmobException e) {
+                        if (e==null){
+                            for (VideoUser videoUser : list) {
+                                BmobQuery<Video> query = new BmobQuery<Video>();
+                                query.addWhereEqualTo("objectId",videoUser.getVideoId());
+                                query.findObjects(new FindListener<Video>() {
+                                    @Override
+                                    public void done(List<Video> list, BmobException e) {
+                                        if (e==null){
+                                            for (Video video : list) {
+//                                                subscriber.onNext(video);
+                                                initVideoInf(video.getObjectId(),
+                                                    video.getVideoFace(),video.getVideoUrl());
+                                            }
+                                            RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+                                            Log.i("测试一下recyclerview","");
+                                            GridLayoutManager gridLayoutManager = new GridLayoutManager(MineActivity.this,2);
+                                            recyclerView.setLayoutManager(gridLayoutManager);
+                                            MineAdapter adapter = new MineAdapter(videoArrayList);
+                                            recyclerView.setAdapter(adapter);
+                                        }
+                                    }
+                                });
+
+                            }
+//                            subscriber.onCompleted();
+                        }
+                    }
+                });
+            }
+//        }).onBackpressureBuffer().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).
+//                subscribe(new Observer<Video>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+//                        Log.i("测试一下recyclerview","");
+//                        GridLayoutManager gridLayoutManager = new GridLayoutManager(MineActivity.this,2);
+//                        recyclerView.setLayoutManager(gridLayoutManager);
+//                        MineAdapter adapter = new MineAdapter(videoArrayList);
+//                        recyclerView.setAdapter(adapter);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable throwable) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(Video video) {
+//                        initVideoInf(video.getObjectId(),
+//                                video.getVideoFace(),video.getVideoUrl());
+//                    }
+//                });
+//    }
+
+
+    public void initUploadVideo(){
+        BmobQuery<UserInf> query2 = new BmobQuery<UserInf>();
+        query2.addWhereEqualTo("UserId",UserId);
+        query2.findObjects(new FindListener<UserInf>() {
+            @Override
+            public void done(List<UserInf> list, BmobException e) {
+                if (e==null){
+                    for (UserInf userInf : list) {
+                        UserCity = userInf.getUserCity();
+                        PreferenceUtil.put(USER_CITY, UserCity);//USER_ID就是用户ID
+                    }
+                    BmobQuery<UserInf> query = new BmobQuery<UserInf>();
+                    query.addWhereEqualTo("UserCity",UserCity);
+                    query.findObjects(new FindListener<UserInf>() {
+                        @Override
+                        public void done(List<UserInf> list, BmobException e) {
+                            if (e==null){
+                                for (UserInf userInf : list) {
+                                    BmobQuery<VideoUser> query = new BmobQuery<VideoUser>();
+                                    query.addWhereEqualTo("UserId",userInf.getObjectId());
+                                    query.findObjects(new FindListener<VideoUser>() {
+                                        @Override
+                                        public void done(List<VideoUser> list, BmobException e) {
+                                            if (e==null){
+                                                for (VideoUser videoUser : list) {
+                                                    BmobQuery<Video> query = new BmobQuery<Video>();
+                                                    query.addWhereEqualTo("VideoId",videoUser.getVideoId());
+                                                    query.findObjects(new FindListener<Video>() {
+                                                        @Override
+                                                        public void done(List<Video> list, BmobException e) {
+                                                            if (e==null){
+                                                                for (Video video : list) {
+                                                                    initVideoInf(video.getObjectId(),
+                                                                            video.getVideoFace(),video.getVideoUrl());
+                                                                }
+                                                                RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+                                                                Log.i("测试一下recyclerview","");
+                                                                GridLayoutManager gridLayoutManager = new GridLayoutManager(MineActivity.this,2);
+                                                                recyclerView.setLayoutManager(gridLayoutManager);
+                                                                MineAdapter adapter = new MineAdapter(videoArrayList);
+                                                                recyclerView.setAdapter(adapter);
+                                                            }
+                                                        }
+                                                    });
+
+                                                }
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    });
+
+
+                }
+            }
+        });
+    }
     @Override
     public void onResume(){
         super.onResume();
@@ -245,6 +391,7 @@ public class MineActivity extends AppCompatActivity {
         if (headUrl != null){
             Glide.with(head.getContext()).load(headUrl).into(head);//让用户头像显示
         }
+        initUserVideo();
         if (followNum != 0){
             Log.i("followNum",followNum.toString());
 //            follow_num.setText(followNum);

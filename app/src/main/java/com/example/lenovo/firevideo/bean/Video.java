@@ -16,8 +16,23 @@ public class Video extends BmobObject {
     public  Integer Video_Comment_Num;//评论量
     public  Integer Video_Energy_Value;//视频能量值
     public String VideoTag;//视频标签
+    public Boolean MaxEnergy = false;
     public Video(){
 
+    }
+
+    public Boolean getMaxEnergy() {
+        return MaxEnergy;
+    }
+
+    public void setMaxEnergy(Boolean maxEnergy) {
+        MaxEnergy = maxEnergy;
+    }
+
+    public Video(String VideoId, String VideoFacePath, String VideoUrl){
+        this.VideoId = VideoId;
+        this.VideoFace = VideoFacePath;
+        this.VideoUrl = VideoUrl;
     }
 
     public void setVideoUrl(String videoUrl) {

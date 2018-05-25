@@ -16,12 +16,14 @@ import android.widget.VideoView;
 import com.example.lenovo.firevideo.R;
 import com.example.lenovo.firevideo.bean.LikeVideoUser;
 import com.example.lenovo.firevideo.bean.Video;
+import com.example.lenovo.firevideo.bean.VideoUser;
 import com.example.lenovo.firevideo.utils.PreferenceUtil;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 public class VideoPlayerActivity extends AppCompatActivity {
     private VideoView videoView ;
@@ -31,6 +33,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
     private String UserId;
     private Boolean UpdateFlag = false;//是否更新到LikeVideoFlag表的标志
     public static final String USER_ID = "user_id";
+    public static Integer LikeNum = 0;
 
 
     @Override
@@ -80,6 +83,22 @@ public class VideoPlayerActivity extends AppCompatActivity {
                        }
                    }
                });
+                Video video = new Video();
+                LikeNum = LikeNum ++;
+                //
+                video.setVideo_Energy_Value(LikeNum);
+                video.update(VideoId, new UpdateListener() {
+                    @Override
+                    public void done(BmobException e) {
+                        if (e==null){
+                            Log.i("更新视频的能量值成功",LikeNum.toString());
+                        }
+                        else {
+                            Log.i("更新视频的能量值失败",e.getMessage()+""+e.getErrorCode());
+                        }
+                    }
+                });
+
             }
         });
 

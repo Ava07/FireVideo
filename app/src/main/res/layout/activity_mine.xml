@@ -179,30 +179,31 @@
                 />
         </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/third_line"
-        android:layout_below="@+id/second_line"
-        android:layout_weight="1">
-        <EditText
-            android:id="@+id/sign"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textSize="17dp"
-            android:textColor="#000000"
-            android:background="@color/lemonyellow"
-            android:hint="有趣的个性签名会吸引更多的粉丝"/>
-    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/third_line"-->
+        <!--android:layout_below="@+id/second_line"-->
+        <!--android:layout_weight="1">-->
+        <!--<EditText-->
+            <!--android:id="@+id/sign"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:textSize="17dp"-->
+            <!--android:textColor="#000000"-->
+            <!--android:background="@color/lemonyellow"-->
+            <!--android:hint="有趣的个性签名会吸引更多的粉丝"/>-->
+    <!--</LinearLayout>-->
     <RelativeLayout
         android:id="@+id/scan_info"
         android:layout_marginLeft="15dp"
-        android:layout_below="@+id/third_line"
+        android:layout_below="@+id/second_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RelativeLayout
             android:id="@+id/video"
+            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
@@ -212,61 +213,61 @@
                 android:background="@drawable/video_select"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/video_num"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/video_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:text="1"
-                android:textSize="20dp"/>
+            <!--<TextView-->
+                <!--android:id="@+id/video_num"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_toRightOf="@+id/video_logo"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="#000000"-->
+                <!--android:text="0"-->
+                <!--android:textSize="20dp"/>-->
         </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/live"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/live_logo"
-                android:clickable="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/live_select"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/live_num"
-                android:layout_centerVertical="true"
-                android:textColor="#000000"
-                android:layout_toRightOf="@+id/live_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:textSize="20dp"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/like"
-            android:layout_marginRight="15dp"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/like_logo"
-                android:layout_centerVertical="true"
-                android:clickable="true"
-                android:background="@drawable/like_select"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/like_num"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/like_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:text="1"
-                android:textSize="20dp"/>
-        </RelativeLayout>
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/live"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<ImageView-->
+                <!--android:id="@+id/live_logo"-->
+                <!--android:clickable="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:background="@drawable/live_select"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+            <!--<TextView-->
+                <!--android:id="@+id/live_num"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:textColor="#000000"-->
+                <!--android:layout_toRightOf="@+id/live_logo"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="1"-->
+                <!--android:textSize="20dp"/>-->
+        <!--</RelativeLayout>-->
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/like"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<ImageView-->
+                <!--android:id="@+id/like_logo"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:clickable="true"-->
+                <!--android:background="@drawable/like_select"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+            <!--<TextView-->
+                <!--android:id="@+id/like_num"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_toRightOf="@+id/like_logo"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="#000000"-->
+                <!--android:text="1"-->
+                <!--android:textSize="20dp"/>-->
+        <!--</RelativeLayout>-->
     </RelativeLayout>
     <LinearLayout
         android:layout_below="@+id/scan_info"
@@ -277,6 +278,11 @@
             android:background="#33000000"
             android:layout_height="match_parent"></View>
     </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/scan_info"></android.support.v7.widget.RecyclerView>
 
     <RadioGroup
         android:id="@+id/radioGroup_mine"
