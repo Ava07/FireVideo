@@ -3,7 +3,9 @@ package com.example.lenovo.firevideo.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.util.DisplayMetrics;
-
+//px：像素,一般在画分割线时使用；
+//dp: 与密度无关的像素，基于屏幕物理密度的抽象单位,px = dp * (dpi / 160)
+//sp: 可伸缩像素的意思，解决了文字大小的适配问题
 public class DisplayUtils {
 	/**
 	 * 将px值转换为dp值

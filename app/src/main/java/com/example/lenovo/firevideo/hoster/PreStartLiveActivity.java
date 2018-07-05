@@ -157,14 +157,14 @@ public class PreStartLiveActivity extends com.example.lenovo.firevideo.BaseActiv
         LiveBean liveBean = new LiveBean();
         liveBean.setmLiveTopic(etLiveName.getText().toString());
         liveBean.setmAnyrtcId(anyrtcId);
-        liveBean.setmPushUrl(pushUrl);
-        liveBean.setmRtmpPullUrl(pullUrl);
+        liveBean.setmPushUrl(pushUrl); //设置推流地址
+        liveBean.setmRtmpPullUrl(pullUrl); //设置拉流地址
         liveBean.setIsLiveLandscape(live_direction_pos == 0 ? 0 : 1);
         liveBean.setLiveMode(live_type_pos);
         liveBean.setmHostName(tvName.getText().toString());
         bundle.putSerializable(LIVEBEAN, liveBean);
         bundle.putString(Constans.LIVEINFO, getLiveInfo(pullUrl,hlsUrl));
-        bundle.putString(Constans.USERINFO, getUserData());
+        bundle.putString(Constans.USERINFO, getUserData());  //传递主播信息
         if (live_type_pos == 0) {
             startAnimActivity(HosterActivity.class, bundle);
         } else {

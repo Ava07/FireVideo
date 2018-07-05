@@ -295,55 +295,6 @@ public class LiveAdVideoActivity extends AppCompatActivity {
             }
         });
 
-        /*
-        videoUser.save(new SaveListener<String>() {
-            @Override
-            public void done(String s, BmobException e) {
-                if (e == null) {
-                    Toast.makeText(LiveAdVideoActivity.this, "上传视频用户关系到VideoUser类成功", Toast.LENGTH_SHORT).show();
-                    VideoUserId = s;
-                } else {
-                    Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
-                    Toast.makeText(LiveAdVideoActivity.this, "上传视频用户关系到VideoUser类失败", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
-        //下面开始更新Video表
-        //但出现了异步加载，需要一定的时延，目前更新失败。获取不到VideoId 2018.5.19
-        Video video1= new Video();
-        video1.setVideoId(VideoId);
-        video1.setVideoUrl(VideoUrl);
-        video1.setVideoFace(VideoFace);
-        video1.update(VideoId, new UpdateListener() {
-            @Override
-            public void done(BmobException e) {
-                if(e==null){
-                    Log.i("bmob","更新Video类信息成功");
-                    Toast.makeText(LiveAdVideoActivity.this, "更新Video类信息成功", Toast.LENGTH_SHORT).show();
-                }else{
-                    Log.i("bmob","更新Video类信息失败："+e.getMessage()+","+e.getErrorCode());
-                }
-            }
-        });
-
-        //下面开始更新VideoUser表
-        VideoUser videoUser1 = new VideoUser();
-        videoUser1.setUserId(UserId);
-        videoUser1.setVideoId(VideoId);
-        videoUser1.update(VideoUserId, new UpdateListener() {
-            @Override
-            public void done(BmobException e) {
-                if (e==null){
-                    Log.i("bmob","更新VideoUser类信息成功");
-                    Toast.makeText(LiveAdVideoActivity.this, "更新VideoUser类信息成功", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Log.i("bmob","更新VideoUser类信息失败："+e.getMessage()+","+e.getErrorCode());
-                }
-            }
-        });   */
     }
 
 

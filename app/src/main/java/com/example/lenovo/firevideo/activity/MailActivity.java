@@ -52,7 +52,6 @@ public class MailActivity extends AppCompatActivity {
         btn_mine = (RadioButton) findViewById(R.id.btn_mine);
         btn_add=(RadioButton)findViewById(R.id.btn_add);
         UserId = PreferenceUtil.getString(USER_ID, "");//USER_ID就是用户ID
-//        btn_mail.setBackgroundResource(R.mipmap.mail_fill);
         initMailInf();
         jump();
     }
@@ -130,84 +129,6 @@ public class MailActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
-
-//                        query.count(LikeVideoUser.class, new CountListener() {
-//                            @Override
-//                            public void done(Integer integer, BmobException e) {
-//                                if (e==null){
-////                                    LikeNum = integer;
-//                                    Log.i("点赞总量为",integer.toString());
-//                                    if (integer != 0){
-//                                        BmobQuery<Video> query2 = new BmobQuery<Video>();
-//                                        query2.addWhereEqualTo("VideoId",LikeVideoId);
-//                                        query2.findObjects(new FindListener<Video>() {
-//                                            @Override
-//                                            public void done(List<Video> list, BmobException e) {
-//                                                if (e==null){
-//                                                    for (Video video : list){
-//                                                        VideoFace = video.getVideoFace();
-//                                                        Log.i("视频封面路径获取到",VideoFace);
-//                                                    }
-//                                                }
-//                                                else {
-//                                                    Log.i("视频封面路径未获取",e.getMessage()+""+e.getErrorCode());
-//
-//                                                }
-//                                            }
-//                                        });
-//
-//                                        BmobQuery<LikeVideoUser> query1 = new BmobQuery<LikeVideoUser>();
-//                                        query1.addWhereEqualTo("VideoId",LikeVideoId);
-//                                        query1.findObjects(new FindListener<LikeVideoUser>() {
-//                                            @Override
-//                                            public void done(List<LikeVideoUser> list, BmobException e) {
-//                                                if (e==null){
-//                                                    for (LikeVideoUser likeVideoUser : list){
-//                                                        BmobQuery<UserInf> query = new BmobQuery<UserInf>();
-//                                                        query.addWhereEqualTo("UserId",likeVideoUser.getUserId());
-//                                                        query.findObjects(new FindListener<UserInf>() {
-//                                                            @Override
-//                                                            public void done(List<UserInf> list, BmobException e) {
-//                                                                if (e==null){
-//                                                                    for (UserInf userInf : list){
-//                                                                        LikeUsername = userInf.getUsername();
-//                                                                        LikeUserHead = userInf.getUserHead();
-//                                                                        initLikeInf(LikeUserHead,LikeUsername,VideoFace);
-//                                                                    }
-//                                                                    RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
-//                                                                    Log.i("测试一下recyclerview","");
-//                                                                    GridLayoutManager gridLayoutManager = new GridLayoutManager(MailActivity.this,1);
-//                                                                    recyclerView.setLayoutManager(gridLayoutManager);
-//                                                                    MailAdapter adapter = new MailAdapter(likeArrayList);
-//                                                                    recyclerView.setAdapter(adapter);
-//                                                                }
-//                                                                else {
-//                                                                    Log.i("点赞用户信息未获取",e.getMessage()+""+e.getErrorCode());
-//
-//                                                                }
-//                                                            }
-//                                                        });
-//                                                    }
-//                                                }
-//                                                else {
-//                                                    Log.i("LikeVideoUser信息获取失败",e.getMessage()+""+e.getErrorCode());
-//
-//                                                }
-//                                            }
-//                                        });
-//                                    }
-//                                    else {
-//                                        Log.i("没有点赞信息","");
-//                                    }
-//
-//                                }
-//                                else {
-//                                    Log.i("查询点赞量失败","");
-//                                }
-//
-//                            }
-//                        });
 
                     }
                 }

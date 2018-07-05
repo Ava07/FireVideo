@@ -126,6 +126,7 @@ public class MineActivity extends AppCompatActivity {
         FollowNumber = followNum.toString();
         FollowerNumber = followerNum.toString();
         EnergyTheValue = energyValue.toString();
+        //Log.i("用户能量",EnergyTheValue);
         follow_num.setText(FollowNumber);
         fens_num.setText(FollowerNumber);
         energy_value.setText(EnergyTheValue);
@@ -224,7 +225,7 @@ public class MineActivity extends AppCompatActivity {
                             public void done(Integer integer, BmobException e) {
                                 if (e==null){
                                     //1个点赞可得到1个能量值
-                                    energyValue = integer;
+                                    energyValue = integer * 2;
                                     UserInf userInf = new UserInf();
                                     userInf.setTotal_Energy_Value(energyValue);
                                     userInf.update(UserId, new UpdateListener() {
@@ -297,30 +298,6 @@ public class MineActivity extends AppCompatActivity {
                     }
                 });
             }
-//        }).onBackpressureBuffer().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).
-//                subscribe(new Observer<Video>() {
-//                    @Override
-//                    public void onCompleted() {
-//                        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
-//                        Log.i("测试一下recyclerview","");
-//                        GridLayoutManager gridLayoutManager = new GridLayoutManager(MineActivity.this,2);
-//                        recyclerView.setLayoutManager(gridLayoutManager);
-//                        MineAdapter adapter = new MineAdapter(videoArrayList);
-//                        recyclerView.setAdapter(adapter);
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable throwable) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onNext(Video video) {
-//                        initVideoInf(video.getObjectId(),
-//                                video.getVideoFace(),video.getVideoUrl());
-//                    }
-//                });
-//    }
 
 
     public void initUploadVideo(){
@@ -396,22 +373,6 @@ public class MineActivity extends AppCompatActivity {
             Log.i("followNum",followNum.toString());
 //            follow_num.setText(followNum);
         }
-//        BmobQuery<UserInf> query2 = new BmobQuery<UserInf>();
-//        query2.addWhereEqualTo("UserId",UserId);
-//        query2.findObjects(new FindListener<UserInf>() {
-//            @Override
-//            public void done(List<UserInf> list, BmobException e) {
-//                if (e==null){
-//                    for (UserInf userInf : list){
-//                        followNum = userInf.getFollow_Num();
-//                        followerNum = userInf.getFollower_Num();
-//                        follow_num.setText(followNum);
-//                        fens_num.setText(followerNum);
-//                    }
-//                }
-//            }
-//        });
-
     }
 
 

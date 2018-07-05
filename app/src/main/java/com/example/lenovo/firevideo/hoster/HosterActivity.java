@@ -181,8 +181,11 @@ public class HosterActivity extends com.example.lenovo.firevideo.BaseActivity im
         String liveinfo = bundle.getString(Constans.LIVEINFO);
         String userinfo = bundle.getString(Constans.USERINFO);
         nickname = liveBean.getmHostName();
+        //下面部分，实例化配置类对象
         RTMPCHosterVideoOption videoOption = new RTMPCHosterVideoOption();
         //设置视频质量 参数对应清晰度，可查看API文档
+        //下面部分设置视频质量：RTMPC_Video_SD，640*480；
+        //RTMPC_Video_Low，352*288
         if (liveBean.getLiveMode() == 0) {
             videoOption.setmVideoMode(AnyRTCRTMPCVideoMode.RTMPC_Video_SD);
         } else if (liveBean.getLiveMode() == 1) {

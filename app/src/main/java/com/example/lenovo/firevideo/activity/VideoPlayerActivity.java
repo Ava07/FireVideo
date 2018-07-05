@@ -84,8 +84,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
                    }
                });
                 Video video = new Video();
-                LikeNum = LikeNum ++;
-                //
+                LikeNum = LikeNum + 2;
                 video.setVideo_Energy_Value(LikeNum);
                 video.update(VideoId, new UpdateListener() {
                     @Override

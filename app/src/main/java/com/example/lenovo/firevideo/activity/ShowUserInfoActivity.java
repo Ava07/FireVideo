@@ -68,59 +68,6 @@ public class ShowUserInfoActivity extends AppCompatActivity {
         });
     }
 
-    /*
-    public void jump(){
-        usercity=tv_usercity.getText().toString();
-        userphone=tv_userphone.getText().toString();
-        //Log.i("用户城市",usercity);
-        PreferenceUtil.put(USER_CITY,usercity);
-        PreferenceUtil.put(USER_PHONE,userphone);
-        userid=PreferenceUtil.getString(USER_ID,"");
-        btn_save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UserInf userInf = new UserInf();
-                userInf.setUserId(userid);
-                userInf.setUserCity(usercity);
-                userInf.setPhoneNum(userphone);
-                edt_usercity.setText(usercity);
-                edt_userphone.setText(userphone);
-                userInf.update(userid, new UpdateListener() {
-                    @Override
-                    public void done(BmobException e) {
-                        if(e==null){
-                            Log.i("bmob","更新用户所处城市成功");
-
-                        }else{
-                            Log.i("bmob","更新用户城市失败："+e.getMessage()+","+e.getErrorCode());
-                        }
-
-                    }
-                });
-            }
-        });
-
-*/
-
-        /*
-        tv_city.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(EditUserinfoActivity.this,EditUserCityActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        tv_phonenum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(EditUserinfoActivity.this,EditPhonenumActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        */
-
 }
 
 

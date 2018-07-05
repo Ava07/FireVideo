@@ -40,6 +40,7 @@ public class SearchUserActivity extends AppCompatActivity {
     public ImageView iv_back;
     private AVLoadingIndicatorView avi;
     private Integer FollowNum;//关注用户数
+    public Boolean GroupFlag = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -103,47 +104,71 @@ public class SearchUserActivity extends AppCompatActivity {
                         FollowedUserId = userInf.getObjectId();
                         tv_username.setText(userName);
                         Glide.with(head.getContext()).load(headUrl).into(head);
-                        btn_group.setOnClickListener(new View.OnClickListener() {
+
+                        BmobQuery<FollowUser> query = new BmobQuery<FollowUser>();
+                        FollowUserId = PreferenceUtil.getString(USER_ID,"");
+                        query.addWhereEqualTo("FollowId",FollowUserId);
+                        query.findObjects(new FindListener<FollowUser>() {
                             @Override
-                            public void onClick(View view) {
-                                showClick(avi);
-                                FollowUser followUser = new FollowUser();
-                                FollowUserId = PreferenceUtil.getString(USER_ID,"");
-                                followUser.setFollowId(FollowUserId);
-                                followUser.setFollowedId(FollowedUserId);
-                                followUser.save(new SaveListener<String>() {
-                                    @Override
-                                    public void done(String s, BmobException e) {
-                                        if (e==null){
-                                            hideClick(avi);
-                                            btn_group.setText("已关注");
-                                            Toast.makeText(SearchUserActivity.this, "关注成功", Toast.LENGTH_SHORT).show();
-                                            UserInf userInf1 = new UserInf();
-                                            FollowNum = userInf1.getFollow_Num();
-                                            FollowNum = FollowNum ++;
-                                            userInf1.setFollow_Num(FollowNum);
-                                            userInf1.update(FollowUserId, new UpdateListener() {
-                                                @Override
-                                                public void done(BmobException e) {
-                                                    if (e==null){
-                                                        Log.i("更新用户关注数据成功",FollowNum.toString());
-                                                    }
-                                                    else {
-                                                        Log.i("更新用户关注数据失败",e.getMessage());
-                                                    }
-                                                }
-                                            });
-                                            Log.i("保存用户关注信息到FollowUser表成功","");
-                                        }
-                                        else {
-                                            Toast.makeText(SearchUserActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
-                                            Log.i("保存用户关注信息到FollowUser表失败",e.getMessage());
+                            public void done(List<FollowUser> list, BmobException e) {
+                                if (e==null) {
+                                    for (FollowUser followUser : list) {
+                                        if (followUser.getFollowedId().equals(FollowedUserId)){
+                                            GroupFlag = true;
+                                            btn_group.setText("您已关注");
                                         }
                                     }
-                                });
+                                    if (GroupFlag == false){
+                                        btn_group.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                showClick(avi);
+                                                FollowUser followUser = new FollowUser();
+                                                FollowUserId = PreferenceUtil.getString(USER_ID,"");
+                                                followUser.setFollowId(FollowUserId);
+                                                followUser.setFollowedId(FollowedUserId);
+                                                followUser.save(new SaveListener<String>() {
+                                                    @Override
+                                                    public void done(String s, BmobException e) {
+                                                        if (e==null){
+                                                            hideClick(avi);
+                                                            btn_group.setText("已关注");
+                                                            Toast.makeText(SearchUserActivity.this, "关注成功", Toast.LENGTH_SHORT).show();
+                                                            UserInf userInf1 = new UserInf();
+                                                            FollowNum = userInf1.getFollow_Num();
+                                                            FollowNum = FollowNum ++;
+                                                            userInf1.setFollow_Num(FollowNum);
+                                                            userInf1.update(FollowUserId, new UpdateListener() {
+                                                                @Override
+                                                                public void done(BmobException e) {
+                                                                    if (e==null){
+                                                                        Log.i("更新用户关注数据成功",FollowNum.toString());
+                                                                    }
+                                                                    else {
+                                                                        Log.i("更新用户关注数据失败",e.getMessage());
+                                                                    }
+                                                                }
+                                                            });
+                                                            Log.i("保存用户关注信息到FollowUser表成功","");
+                                                        }
+                                                        else {
+                                                            Toast.makeText(SearchUserActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
+                                                            Log.i("保存用户关注信息到FollowUser表失败",e.getMessage());
+                                                        }
+                                                    }
+                                                });
 
+                                            }
+                                        });
+                                    }
+                                }
+                                else {
+                                    Log.i("查找用户关注信息失败",e.getMessage()+""+e.getErrorCode());
+                                }
                             }
                         });
+
+
                     }
                 }
                 else {
